@@ -1,6 +1,9 @@
 "use client"
 import React, { useState,useEffect } from 'react';
 import axios, { Axios } from 'axios';
+import ListSalarieEcriture from '@/app/component/listSalarieEcriture';
+import ChefProjet from '@/app/component/chefProjet';
+import ListSalarieLecture from '@/app/component/listSalarieLecture';
 
 
 
@@ -11,11 +14,8 @@ const App = () => {
     const [input1, setInput1] = useState('');
     const [input2, setInput2] = useState('');
     const [liste_salarie,setListe_salarie] = useState([]);
-    const [chefprojet, setChefProjet] = useState('');
-    const [ecriture, setEcriture]= useState([]);
-    const [lecture, setLecture]= useState([]);
-    const [selectLecture, setSelectLecture] = useState("");
-    const [selectEcriture, setSelectEcriture] = useState("");
+
+
 
 
 
@@ -29,26 +29,7 @@ const App = () => {
         setInput2(e.target.value)
 
     }
-
-    const handleLectureChange = (e) => {
-      const selectedValue = e.target.value;
-      if (!lecture.includes(selectedValue)) {
-        setSelectLecture(selectedValue);
-        setLecture([...lecture, selectedValue]);
-      }
-    };
-  
-    const handleEcritureChange = (e) => {
-      const selectedValue = e.target.value;
-      if (!ecriture.includes(selectedValue)) {
-        setSelectEcriture(selectedValue);
-        setEcriture([...ecriture, selectedValue]);
-      }
-    };
-    const getNomById = (id) => {
-      const selectedSalarie = liste_salarie.find((item) => item._id === id);
-      return selectedSalarie ? selectedSalarie.nom : '';
-    };
+    
     
 
     async function handleClick(){
@@ -79,100 +60,21 @@ const App = () => {
         onChange={handleInputChange}
       />
       </label>
-      <label>
-        Description :
-        <br></br>
+      <p>Description :</p>
+
       <input
         type="text"
         value={input2}
         onChange={handleInputChange2}
       />
-      </label>
+
     </div>
-      <div>
-        <label>
-            <br></br>
-          Chef de Projet:
-          <select
-            value={chefprojet}
-            onChange={(e) => setChefProjet(e.target.value)}
-          >
-            {liste_salarie && liste_salarie.map((item)=>(
-                <option value={item._id}>{item.nom}  {item.Prenom}</option>
-            ))}
-          </select>
-        </label>
-      </div>
-
-            <div>
-                <label>
-                    <br></br>
-                    Lecteur:
-                    <select
-                        value={selectLecture}
-                        onChange={handleLectureChange}
-                    >
-                           {liste_salarie && liste_salarie.map((item)=>(
-                <option value={item._id}>{item.nom}  {item.Prenom}</option>
-            ))}
-                    </select>
-                </label>
-            </div>
-            <div>
-                    {lecture.length > 0 && (
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Nom</th>
-                                        <th>Prénom</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {lecture.map((selected) => (
-                                        <tr key={selected}>
-                                            <td>{getNomById(selected)}</td>
-                                            <td></td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                    )}
-                    </div>
-            <div>
-                <label>
-                    <br></br>
-                    Ecriture:
-                    <select
-                        value={selectEcriture}
-                        onChange={handleEcritureChange}
-                    >
-                         {liste_salarie && liste_salarie.map((item)=>(
-                <option value={item._id}>{item.nom}  {item.Prenom}</option>
-            ))}
-                    </select>
-                    <div>
-                    {ecriture.length > 0 && (
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Nom</th>
-                                        <th>Prénom</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {ecriture.map((selected) => (
-                                        <tr key={selected}>
-                                            <td>{getNomById(selected)}</td>
-                                            <td></td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                    )}
-                    </div>
-                </label>
-            </div>
-
+          <ChefProjet liste_salarie={liste_salarie}></ChefProjet>
+          <br></br>
+          <ListSalarieLecture liste_salarie={liste_salarie} ></ListSalarieLecture>
+          <br></br>
+          <ListSalarieEcriture liste_salarie={liste_salarie} ></ListSalarieEcriture>
+          <br></br>
             <button onClick={handleClick}>Creer Projet</button>
         </div>
       );
