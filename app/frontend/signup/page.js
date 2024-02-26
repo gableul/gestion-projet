@@ -6,7 +6,7 @@ import axios, { Axios } from 'axios';
 const SignupPage = () => {
   const handleSignup = async (formData) => {
     try {
-      const response = await axios.post("http://localhost:3001/users/register", {
+      const response = await axios.post("http://localhost:3003/users/register", {
         password: formData.password,
         nom: formData.name,
         prenom: formData.prenom

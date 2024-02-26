@@ -7,6 +7,9 @@ const SignupForm = ({ onSubmit }) => {
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
+    setName('')
+    setPassword("")
+    setPrenom("")
     e.preventDefault();
     onSubmit({ name, prenom, password });
   };
