@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 function ListSalarieLecture(props){
-    const [lecture, setLecture]= useState([]);
+    lecture=props.lecture
     const [selectLecture, setSelectLecture] = useState("");
 
     const handleLectureChange = (e) => {

@@ -2,37 +2,43 @@
 import React, { useState } from 'react';
 
 const SignupForm = ({ onSubmit }) => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [prenom, setPrenom] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ username, email, password });
+    onSubmit({ name, prenom, password });
   };
+ 
 
   return (
+    <>
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        placeholder="name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        required
       />
       <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        type="text"
+        placeholder="prenom"
+        value={prenom}
+        onChange={(e) => setPrenom(e.target.value)}
+        required
       />
       <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        required
       />
-      <button type="submit">Sign Up</button>
+      <button type='submit'>Creer le compte</button>
     </form>
+    </>
   );
 };
 

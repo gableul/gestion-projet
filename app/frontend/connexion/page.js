@@ -2,11 +2,12 @@
 
 import React from 'react';
 import LoginForm from '@/app/component/LoginForm';
-
+import axios, { Axios } from 'axios';
 const LoginPage = () => {
-  const handleLogin = (formData) => {
-    console.log('Submitted:', formData);
-  };
+  async function handleLogin  (formData){
+    const data = await axios.post("http://localhost:3001/users/login", {password : formData.password,nom : formData.name})
+  }
+
 
   return (
     <div>

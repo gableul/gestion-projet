@@ -14,7 +14,7 @@ const App = () => {
     const [input1, setInput1] = useState('');
     const [input2, setInput2] = useState('');
     const [liste_salarie,setListe_salarie] = useState([]);
-
+    const [lecture, setLecture]= useState([]);
 
 
 
@@ -71,7 +71,7 @@ const App = () => {
     </div>
           <ChefProjet liste_salarie={liste_salarie}></ChefProjet>
           <br></br>
-          <ListSalarieLecture liste_salarie={liste_salarie} ></ListSalarieLecture>
+          <ListSalarieLecture liste_salarie={liste_salarie} lecture={[lecture, setLecture]} ></ListSalarieLecture>
           <br></br>
           <ListSalarieEcriture liste_salarie={liste_salarie} ></ListSalarieEcriture>
           <br></br>
