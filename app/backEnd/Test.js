@@ -9,7 +9,8 @@ const crypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const authentification = require("./src/middlewares/authentification");
 const { Connectdb } = require("./src/services/mongoose");
-const { connect } = require("mongoose")
+const { connect } = require("mongoose");
+const { userAgent } = require('next/server.js');
 
 //url: `https://wps.hereapi.com/v8/findsequence2?start=Maison;48.913205009379,2.523774030862&destination1=Lagny;48.877627289,2.705573581&end=Hugo;48.915134984495,2.531670035111&improveFor=time&departure=2023-12-09T09:30:00%2b01:00&mode=fastest;car;traffic:enabled`
 
@@ -109,6 +110,7 @@ app.patch("/ModifierEtatTache/:id",async (req,res)=>{
 app.post("/users/login", async (req, res, next) => {
   try {
       const user = await Salarie.findOne({ nom: req.body.nom });
+      console.log(user)
       crypt.compare(req.body.password, user.MDP, async (err, result) => {
           if (result) {
               var token = jwt.sign({ _id: user._id }, "foo");
