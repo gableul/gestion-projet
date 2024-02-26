@@ -1,12 +1,14 @@
-const polyline = require("./polyline.js")
 const express = require('express')
 const axios = require("axios")
 const geo = require("geolib")
 const app = express()
 const port = 3001;
-const Trajett = require("./src/models/Trajet.js");
 const Projet = require("./src/models/Projet.js");
+const Tache = require("./src/models/Tache.js");
 const Salarie = require("./src/models/Salarie.js");
+const crypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const authentification = require("./src/middlewares/authentification");
 const { Connectdb } = require("./src/services/mongoose");
 const { connect } = require("mongoose")
 
@@ -42,20 +44,10 @@ app.get("/test",async (req,res)=>{
       _id: parseInt(Math.random() * (10000000000000 - 0) + 0),
       nom: "Gabriel",
       Prenom:"lebg",
-
+      MDP:"Azerty"
     }
   )
   NewAgence.save();
-  const NewAgenc= new Salarie(
-    {
-      _id: parseInt(Math.random() * (10000000000000 - 0) + 0),
-      nom: "Bogo",
-      Prenom:"Chat",
-
-    }
-  )
-  NewAgenc.save();
-
 });
 
 app.get("/Salarie",async (req,res)=>{
@@ -63,7 +55,13 @@ app.get("/Salarie",async (req,res)=>{
   res.send({salarie:data})
 })
 
-app.post("/:nom/:description/:chef",(req,res)=>{
+app.get("/Projet",async(req,res)=>{
+    const data = await Projet.find();
+    res.send({projet:data});
+
+})
+
+app.post("/creerProjet/:nom/:description/:chef",(req,res)=>{
   console.log(req.body)
     const data = req.body
     const project = new Projet(
@@ -77,9 +75,75 @@ app.post("/:nom/:description/:chef",(req,res)=>{
       }
     )
     project.save();
-    res.send("tout va bien")
+    res.send("Création du projet finis !")
 })
 
+app.post("/creationTache",(req,res)=>{
+  const data = req.body
+  const tache = new Tache(
+    {
+      _id:parseInt(Math.random() * (10000000000000 - 0) + 0),
+      titre:data.titre,
+      description:data.descrip,
+      effort:data.effort,
+      etat:data.etat,
+      id_projet:data.idP
+    }
+  )
+  tache.save();
+  res.send("Création de la tache finis !")
+})
+
+app.delete("/SupprimerTache/:id",async (req,res)=>{
+  await Tache.findByIdAndDelete(req.params.id);
+  res.send("La tache a été effacer avec succés");
+})
+
+app.patch("/ModifierEtatTache/:id",async (req,res)=>{
+      const data = req.body
+      await Tache.findByIdAndUpdate(req.params.id,{etat:data.etat});
+      res.send("Modification de l'etat terminé");
+
+})
+
+
+app.post("/users/login", async (req, res, next) => {
+  try {
+      const user = await Salarie.findOne({ nom: req.body.nom });
+      crypt.compare(req.body.password, user.MDP, async (err, result) => {
+          if (result) {
+              var token = jwt.sign({ _id: user._id }, "foo");
+              user.AuthTokens = token;
+              await user.save();
+              res.send({ user: { prenom: user.prenom, nom: user.nom, id: user._id }, token });
+          } else {
+              res.status(400).json({ message: "Mauvais mot de passe" });
+          }
+      });
+  } catch (e) {
+      res.status(404).json({ message: "Not found: Compte n'existe pas, veuillez en créer un " });
+  }
+});
+
+app.post("/users/register", async (req, res, next) => {
+
+  crypt.hash(req.body.password, 8, async (err, hash) => {
+      try {
+          req.body.password = hash;
+          const user = new Salarie({
+              _id:parseInt(Math.random() * (10000000000000 - 0) + 0),
+              nom: req.body.nom,
+              Prenom: req.body.prenom,
+              MDP: req.body.password
+          });
+          const saveUser = await user.save();
+          res.send(saveUser);
+      } catch (e) {
+          res.status(401).json({ message: "Nous n'avons pas pu créer le compte en raison d'un possible conflit avec des informations d'identification existantes ou d'une autre erreur. Veuillez réessayer avec d'autres informations" });
+      }
+  });
+
+});
 
 
 

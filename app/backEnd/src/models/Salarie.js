@@ -15,8 +15,13 @@ const Salarie = mongoose.model("Salarie",{
         type:String
     },
 
-    MDP:{
+    AuthTokens:{
         type:String
+    },
+
+    MDP:{
+        type:String,
+
     }
 
 });
