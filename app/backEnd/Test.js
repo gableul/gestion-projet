@@ -110,7 +110,6 @@ app.patch("/ModifierEtatTache/:id",async (req,res)=>{
 app.post("/users/login", async (req, res, next) => {
   try {
       const user = await Salarie.findOne({ nom: req.body.nom });
-      console.log(user)
       crypt.compare(req.body.password, user.MDP, async (err, result) => {
           if (result) {
               var token = jwt.sign({ _id: user._id }, "foo");
