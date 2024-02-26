@@ -10,7 +10,7 @@ import ListSalarieLecture from '@/app/component/listSalarieLecture';
 
 
 
-const App = () => {
+function CreateProjet  () {
     const [input1, setInput1] = useState('');
     const [input2, setInput2] = useState('');
     const [liste_salarie,setListe_salarie] = useState([]);
@@ -80,4 +80,4 @@ const App = () => {
       );
 };
 
-export default App;
+export default CreateProjet;

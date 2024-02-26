@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 function ChefProjet(props){
     const [chefprojet, setChefProjet] = useState('');
     return(
-        <>
+        <form onSubmit={handleSubmit} >
          Chef de Projet:
           <select
             value={chefprojet}
@@ -16,8 +16,7 @@ function ChefProjet(props){
             ))}
             
           </select>
-                <br></br>
-        </>
+        </form>
     );
 }
 

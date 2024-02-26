@@ -16,7 +16,7 @@ const LoginPage = () => {
       });
   
       localStorage.setItem("token",response.data.token)
-      window.location.href = '/frontend/acceuil'; 
+      window.location.href = '/frontend/welcom'; 
     } catch (error) {
       // Gérer les erreurs, par exemple afficher un message d'erreur ou des détails sur la console
       console.error("Login failed:", error);
