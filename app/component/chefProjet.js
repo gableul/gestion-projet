@@ -5,7 +5,7 @@ function ChefProjet(props){
     const [chefprojet, setChefProjet] = useState('');
     return(
         <>
-         <p>Chef de Projet:</p>
+         Chef de Projet:
           <select
             value={chefprojet}
             onChange={(e) => setChefProjet(e.target.value)}
