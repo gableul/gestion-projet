@@ -6,6 +6,8 @@ const LoginForm = ({ onSubmit }) => {
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
+    setName("")
+    setPassword("")
     e.preventDefault();
     onSubmit({ name, password });
   };
