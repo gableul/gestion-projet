@@ -163,6 +163,23 @@ app.get("/ProjetbyId/:id",async (req,res) =>{
   res.send(data);
 })
 
+app.post("/TachebyId",async (req,res) =>{
+  const listeIDTache = req.body.liste;
+  let liste_Tache = [];
+  if(listeIDTache.length == 1){
+      const data  = await Tache.findById(listeIDTache[0])
+      res.send(data[0]);
+      return
+  }else{
+      for(let i =0;i<listeIDTache.length;i++){
+        const data  = await Tache.findById(listeIDTache[0])
+        liste_Tache.push(data[0]);
+      }
+      res.send(liste_Tache)
+
+  }
+})
+
 
 
 
