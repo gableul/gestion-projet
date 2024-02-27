@@ -7,13 +7,6 @@ function ProjetSolo(props){
     const [Taches,setTaches] = useState([])
     const [Droit,setDroit] = useState(null);
 
-    const droit = (projet) => {
-      let droit_Ecriture = projet.Ecriture.includes(localStorage.getItem("id"));
-      let droit_Lecture = projet.Lecteur.includes(localStorage.getItem("id"));
-      let droit_Chef = (projet.Chef_Projet == localStorage.getItem("id"));
-      console.log("C'ets icici"+droit_Ecriture)
-      return {Lecture:droit_Lecture,Ecriture:droit_Ecriture,Chef:droit_Chef}
-    }
  
     useEffect(() => {
         const da = async ()=>{
@@ -28,8 +21,7 @@ function ProjetSolo(props){
 
         da();
       },[]);
-      const Droits = droit(projects);
-      setDroit(Droits);
+
     return (
       <div>
         <h1>Projet</h1>
@@ -52,9 +44,7 @@ function ProjetSolo(props){
             ))}
           </tbody>
         </table>
-      {Droit.Ecriture && <button>Modifier Etat Tache</button>}
-      {Droit.Chef && <button>Creer Tache</button>}
-        
+
       </div>
     );
   };
