@@ -107,7 +107,9 @@ app.delete("/SupprimerTache/:id",async (req,res)=>{
 
 app.patch("/ModifierEtatTache/:id",async (req,res)=>{
       const data = req.body
+      console.log(data.etat+"  dfdz")
       await Tache.findByIdAndUpdate(req.params.id,{etat:data.etat});
+      console.log("Modification etat fini")
       res.send("Modification de l'etat terminé");
 
 })
@@ -200,6 +202,13 @@ app.get("/Droit/:IdProjet/:IdUser",async (req,res) => {
     }
 
     res.send({Lecteur:Droit_lecteur,Chef:Droit_Chef})
+})
+
+app.get("/Tache/:id",async (req,res) =>{
+
+    const data = await Projet.findById(req.params.id);
+
+    res.send(data.Taches);
 })
 
 

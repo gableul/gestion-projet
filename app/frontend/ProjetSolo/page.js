@@ -46,7 +46,7 @@ function ProjetSolo(props){
           </tbody>
         </table>
 
-        {Droit.Lecteur ? Droit.Chef ? <div><button>Creer Tache</button> <br></br> <button>Modifier Tache</button> </div> :<button>Modifier Tache </button> :""}
+        {Droit.Lecteur ? Droit.Chef ? <div> <a href="http://localhost:3000/frontend/CreateTache"><button>Creer Tache</button></a><br></br> <a href="http://localhost:3000/frontend/ModificationTache"><button>Modifier Tache</button></a></div> : <a href="http://localhost:3000/frontend/ModificationTache"><button>Modifier Tache </button></a>:""}
 
       </div>
     );
