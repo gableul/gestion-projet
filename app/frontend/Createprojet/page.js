@@ -15,6 +15,8 @@ function CreateProjet  () {
     const [input2, setInput2] = useState('');
     const [liste_salarie,setListe_salarie] = useState([]);
     const [lecture, setLecture]= useState([]);
+    const [Chef_Projet,setChef_Projet] = useState("");
+    const [Ecriture,setEcriture] = useState("")
 
 
 
@@ -33,13 +35,14 @@ function CreateProjet  () {
     
 
     async function handleClick(){
-        const data = await axios.post("http://localhost:3001/"+input1+"/"+input2+"/"+chefprojet , {Lecture :lecture,Ecriture : ecriture})
+        console.log("Lecture : "+lecture+" Ecriture : "+ Ecriture+" Chef : "+Chef_Projet)
+        const data = await axios.post("http://localhost:3003/creerProjet/"+input1+"/"+input2+"/"+ Chef_Projet , {Lecture :lecture,Ecriture : Ecriture})
     }
 
 
     useEffect(() => {
         const da = async ()=>{
-        const liste = await axios.get("http://localhost:3001/Salarie")
+        const liste = await axios.get("http://localhost:3003/Salarie")
         console.log(liste.data)
         setListe_salarie(liste.data.salarie)
         }
@@ -69,11 +72,11 @@ function CreateProjet  () {
       />
 
     </div>
-          <ChefProjet liste_salarie={liste_salarie}></ChefProjet>
+          <ChefProjet liste_salarie={liste_salarie} Chef={Chef_Projet} setChef={setChef_Projet}></ChefProjet>
           <br></br>
-          <ListSalarieLecture liste_salarie={liste_salarie} lecture={[lecture, setLecture]} ></ListSalarieLecture>
+          <ListSalarieLecture liste_salarie={liste_salarie} lecture={lecture} setlecture={setLecture} ></ListSalarieLecture>
           <br></br>
-          <ListSalarieEcriture liste_salarie={liste_salarie} ></ListSalarieEcriture>
+          <ListSalarieEcriture liste_salarie={liste_salarie} ecriture={Ecriture} setecriture={setEcriture}></ListSalarieEcriture>
           <br></br>
             <button onClick={handleClick}>Creer Projet</button>
         </div>

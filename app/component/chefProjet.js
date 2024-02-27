@@ -2,13 +2,17 @@
 import React, { useState } from 'react';
 
 function ChefProjet(props){
-    const [chefprojet, setChefProjet] = useState('');
+    const {Chef} = props;
+    const {setChef} =props
+    const handleSubmit=()=>{
+
+    }
     return(
         <form onSubmit={handleSubmit} >
          Chef de Projet:
           <select
-            value={chefprojet}
-            onChange={(e) => setChefProjet(e.target.value)}
+            value={Chef}
+            onChange={(e) => setChef(e.target.value)}
           >
             <option>Selectionner</option>
             {props.liste_salarie && props.liste_salarie.map((item)=>(

@@ -75,6 +75,7 @@ app.post("/creerProjet/:nom/:description/:chef",(req,res)=>{
       }
     )
     project.save();
+    console.log("Finis")
     res.send("Création du projet finis !")
 })
 
@@ -145,6 +146,19 @@ app.post("/users/register", async (req, res, next) => {
 
 });
 
+app.get("/GetNom/:id",async (req,res)=>{
+    const data = await Salarie.findById(req.params.id);
+    res.send({salarie:data[0]})
+})
+
+app.get("/Projet/:id",async (req,res) =>{
+  const data1 = await Projet.find({Ecriture: {$in:[req.params.id]}});
+  const data2 = await Projet.find({Lecture: {$in:[req.params.id]}});
+
+  res.send([...data1,data2]);
+})
+
+app.get()
 
 
 

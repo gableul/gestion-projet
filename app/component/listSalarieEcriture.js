@@ -1,21 +1,36 @@
 "use client"
 import React, { useState } from 'react';
+const axios = require("axios")
 
 function ListSalarieEcriture(props){
     const [selectEcriture, setSelectEcriture] = useState("");
-    const [ecriture, setEcriture]= useState([]);
+    const {setecriture} = props;
+    const {ecriture} = props;
 
     const handleEcritureChange = (e) => {
         const selectedValue = e.target.value;
         if (!ecriture.includes(selectedValue)) {
           setSelectEcriture(selectedValue);
-          setEcriture([...ecriture, selectedValue]);
+          setecriture([...ecriture, selectedValue]);
         }
       };
-      const getNomById = (id) => {
-        const selectedSalarie = props.liste_salarie.find((item) => item._id === id);
-        return selectedSalarie ? selectedSalarie.nom : '';
+      const getNomById = async(id) => {
+        const data = await axios.get("http://localhost:3003/GetNom/"+id);
+        return data[0];
       };
+
+      const Liste_salarie_avec_nom = () =>{
+        let liste = []
+        for(let i =0;i<props.liste_salarie.length;i++){
+            liste.push({id:props.liste_salarie._id,nom:props.liste_salarie.nom,prenom:props.liste_salarie.Prenom});
+        }
+        console.log(liste)
+        return liste
+      }
+
+      const liste = Liste_salarie_avec_nom();
+
+
 
     return (
         <>
@@ -41,7 +56,7 @@ function ListSalarieEcriture(props){
                                 <tbody>
                                     {ecriture.map((selected) => (
                                         <tr key={selected}>
-                                            <td>{getNomById(selected)}</td>
+                                            <td>{selected}</td>
                                             <td></td>
                                         </tr>
                                     ))}

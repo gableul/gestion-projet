@@ -16,6 +16,7 @@ const LoginPage = () => {
       });
   
       localStorage.setItem("token",response.data.token)
+      localStorage.setItem("id",response.data.user.id)
       window.location.href = '/frontend/welcom'; 
     } catch (error) {
       // Gérer les erreurs, par exemple afficher un message d'erreur ou des détails sur la console

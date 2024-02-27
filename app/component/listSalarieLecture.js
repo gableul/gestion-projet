@@ -2,14 +2,15 @@
 import React, { useState } from 'react';
 
 function ListSalarieLecture(props){
-    lecture=props.lecture
     const [selectLecture, setSelectLecture] = useState("");
+    const {lecture} = props;
+    const {setlecture} = props;
 
     const handleLectureChange = (e) => {
         const selectedValue = e.target.value;
         if (!lecture.includes(selectedValue)) {
           setSelectLecture(selectedValue);
-          setLecture([...lecture, selectedValue]);
+          setlecture([...lecture, selectedValue]);
         }
       };
     
@@ -43,7 +44,7 @@ function ListSalarieLecture(props){
                                 <tbody>
                                     {lecture.map((selected) => (
                                         <tr key={selected}>
-                                            <td>{getNomById(selected)}</td>
+                                            <td>{selected}</td>
                                             <td></td>
                                         </tr>
                                     ))}
