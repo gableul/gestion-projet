@@ -7,8 +7,8 @@ function ProjetSolo(props){
 
     useEffect(() => {
         const da = async ()=>{
-        const liste = await axios.get("http://localhost:3003/Projet/"+props.id)
-        console.log(liste.data)
+        const liste = await axios.get("http://localhost:3003/ProjetbyId/"+localStorage.getItem("idProjet"))
+        console.log("khgjgjfhg"+liste.data[0]._id)
         setProjects(liste.data)
         }
 
@@ -32,6 +32,7 @@ function ProjetSolo(props){
                 <td>{project.nom}</td>
                 <td>{project.Description}</td>
                 <td>{project.Chef_Projet}</td>
+                <td>bonjjjj</td>
               </tr>
             ))}
           </tbody>

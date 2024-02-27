@@ -158,7 +158,11 @@ app.get("/Projet/:id",async (req,res) =>{
   res.send([...data1,data2]);
 })
 
-app.get()
+app.get("/ProjetbyId/:id",async (req,res) =>{
+  const data = await Projet.find({_id:req.params.id})
+  res.send(data);
+})
+
 
 
 
