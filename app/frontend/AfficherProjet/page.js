@@ -41,7 +41,7 @@ function AfficherProjet(props){
           ))}
         </ul>
 
-        {idProjet && <ProjetSolo></ProjetSolo>}
+        {idProjet && <ProjetSolo Id={idProjet}></ProjetSolo>}
         
 
 

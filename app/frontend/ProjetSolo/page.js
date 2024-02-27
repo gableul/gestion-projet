@@ -1,26 +1,26 @@
 "use client"
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect,useRef } from 'react';
 import axios, { Axios } from 'axios';
 
 function ProjetSolo(props){
     const [projects, setProjects] = useState([]);
     const [Taches,setTaches] = useState([])
-    const [Droit,setDroit] = useState(null);
-
+    const [Droit,setDroit] = useState(false);
+    const ID = props.Id;
  
     useEffect(() => {
         const da = async ()=>{
         const liste = await axios.get("http://localhost:3003/ProjetbyId/"+localStorage.getItem("idProjet"))
         const liste2 = await axios.post("http://localhost:3003/TachebyId",{liste:liste.data[0].Taches})
+        const droits = await axios.get("http://localhost:3003/Droit/"+localStorage.getItem("idProjet")+"/"+localStorage.getItem("id"));
+        setDroit(droits.data)
 
-        console.log("hbjdjhb"+liste2.data)
-        console.log("khgjgjfhg"+liste.data[0]._id)
         setProjects(liste.data)
         setTaches(liste2.data)
         }
 
         da();
-      },[]);
+      },[ID]);
 
     return (
       <div>
@@ -40,10 +40,13 @@ function ProjetSolo(props){
                 <td>{project.nom}</td>
                 <td>{project.Description}</td>
                 <td>{project.Chef_Projet}</td>
+                <td>{project.Taches}</td>
               </tr>
             ))}
           </tbody>
         </table>
+
+        {Droit.Lecteur ? Droit.Chef ? <div><button>Creer Tache</button> <br></br> <button>Modifier Tache</button> </div> :<button>Modifier Tache </button> :""}
 
       </div>
     );

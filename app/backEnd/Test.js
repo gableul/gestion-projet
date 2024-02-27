@@ -79,7 +79,7 @@ app.post("/creerProjet/:nom/:description/:chef",(req,res)=>{
     res.send("Création du projet finis !")
 })
 
-app.post("/creationTache",(req,res)=>{
+app.post("/creationTache",async (req,res)=>{
   const data = req.body
   const tache = new Tache(
     {
@@ -92,6 +92,11 @@ app.post("/creationTache",(req,res)=>{
     }
   )
   tache.save();
+
+  let tache_projet = await Projet.findById(data.idP)
+  tache_projet.Taches.push(tache._id)
+  await Projet.findByIdAndUpdate(data.idP,{Taches:tache_projet.Taches})
+  console.log("finis creation tache")
   res.send("Création de la tache finis !")
 })
 
@@ -154,8 +159,14 @@ app.get("/GetNom/:id",async (req,res)=>{
 app.get("/Projet/:id",async (req,res) =>{
   const data1 = await Projet.find({Ecriture: {$in:[req.params.id]}});
   const data2 = await Projet.find({Lecture: {$in:[req.params.id]}});
+  let liste = [];
+  if(data1.length == 0){
+    liste = data2
+  }else{
+    liste = data1
+  }
 
-  res.send([...data1,data2]);
+  res.send(liste);
 })
 
 app.get("/ProjetbyId/:id",async (req,res) =>{
@@ -178,6 +189,17 @@ app.post("/TachebyId",async (req,res) =>{
       res.send(liste_Tache)
 
   }
+})
+
+app.get("/Droit/:IdProjet/:IdUser",async (req,res) => {
+    const data = await Projet.findById(req.params.IdProjet);
+    let Droit_lecteur = false
+    let Droit_Chef = data.Chef_Projet == req.params.IdUser
+    if(data.Lecteur.includes(req.params.IdUser)){
+        Droit_lecteur = true;
+    }
+
+    res.send({Lecteur:Droit_lecteur,Chef:Droit_Chef})
 })
 
 
