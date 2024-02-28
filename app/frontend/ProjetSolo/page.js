@@ -45,7 +45,8 @@ function ProjetSolo(props){
           </tbody>
         </table>
 
-        {Droit.Lecteur ? <div> <a href="http://localhost:3000/frontend/CreateTache"><button>Creer Tache</button></a><br></br> <a href="http://localhost:3000/frontend/ModificationTache"><button>Modifier Tache</button></a></div> :""}
+        {Droit.Lecteur ? <div> <a href="http://localhost:3004/frontend/CreateTache"><button>Creer Tache</button></a><br></br>
+         <a href="http://localhost:3004/frontend/ModificationTache"><button>Modifier Tache</button></a></div> :""}
 
         <ul>
           {Taches.map(task =>(

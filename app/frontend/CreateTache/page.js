@@ -3,15 +3,18 @@ import React, { useState } from 'react';
 import axios, { Axios } from 'axios';
 
 function CreateTache() {
-    const [Titre,setTitre] = useState();
-    const [Description,setDescription] = useState();
-    const [Effort,setEffort] =  useState();
-    const [Etat,setEtat] = useState()
+    const [Titre,setTitre] = useState("");
+    const [Description,setDescription] = useState("");
+    const [Effort,setEffort] =  useState("");
+    const [Etat,setEtat] = useState("")
 
 
   // Gestionnaire de soumission pour traiter les données lors de la soumission du formulaire
   const handleSubmit = async () => {
     try {
+        if (Titre.length==0 || Description.length==0||Effort.length==0||Etat.length==0){
+          alert("Merci de remplire tous les champs")
+        }
         await axios.post("http://localhost:3003/creationTache", {
             titre: Titre,
             descrip: Description,
@@ -19,10 +22,11 @@ function CreateTache() {
             etat: Etat,
             idP: localStorage.getItem("idProjet")
         });
+        
         console.log("Tâche créée avec succès !");
     } catch (error) {
         console.error("Erreur lors de la création de la tâche :", error);
-    }
+    }window.location.href = '/frontend/welcom'; 
 };
 
 
@@ -36,6 +40,7 @@ function CreateTache() {
           name="title"
           value={Titre}
           onChange={(e) => setTitre(e.target.value)}
+          required
         />
       </div>
       <div>
@@ -46,6 +51,7 @@ function CreateTache() {
           name="description"
           value={Description}
           onChange={(e) => setDescription(e.target.value)}
+          required
         />
       </div>
       <div>
@@ -56,6 +62,7 @@ function CreateTache() {
           name="effort"
           value={Effort}
           onChange={(e) => setEffort(e.target.value)}
+          required
         />
       </div>
       <div>
@@ -65,6 +72,7 @@ function CreateTache() {
           name="etat"
           value={Etat}
           onChange={(e) => setEtat(e.target.value)}
+          required
         >
           <option value="">Sélectionnez l'état</option>
           <option value="0">Non Commencé</option>
@@ -73,6 +81,7 @@ function CreateTache() {
         </select>
       </div>
       <button onClick={handleSubmit}>Soumettre</button>
+      <br></br><a href="/frontend/welcom">Retour</a>
       </div>
 
   );

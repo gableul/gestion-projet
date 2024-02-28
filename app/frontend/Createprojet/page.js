@@ -11,8 +11,8 @@ import ListSalarieLecture from '@/app/component/listSalarieLecture';
 
 
 function CreateProjet  () {
-    const [input1, setInput1] = useState('');
-    const [input2, setInput2] = useState('');
+    const [Titre, setTitre] = useState('');
+    const [Description, setDescription] = useState('');
     const [liste_salarie,setListe_salarie] = useState([]);
     const [lecture, setLecture]= useState([]);
     const [Chef_Projet,setChef_Projet] = useState("");
@@ -24,19 +24,26 @@ function CreateProjet  () {
 
 
     function handleInputChange(e){
-        setInput1(e.target.value)
+        setTitre(e.target.value)
 
     }
     function handleInputChange2(e){
-        setInput2(e.target.value)
+        setDescription(e.target.value)
 
     }
     
     
 
     async function handleClick(){
+      try{
+      if((lecture.length==0&&Ecriture.length==0)||Chef_Projet.length==0|Titre.length==0||lecture.length==0){
+        alert("Merci de remplir tous les champs")
+      }
         console.log("Lecture : "+lecture+" Ecriture : "+ Ecriture+" Chef : "+Chef_Projet)
-        const data = await axios.post("http://localhost:3003/creerProjet/"+input1+"/"+input2+"/"+ Chef_Projet , {Lecture :lecture,Ecriture : Ecriture})
+        const data = await axios.post("http://localhost:3003/creerProjet/"+Titre+"/"+Description+"/"+ Chef_Projet , {Lecture :lecture,Ecriture : Ecriture})
+      } catch (error) {
+        console.error("Erreur lors de la création de la tâche :", error);
+    }window.location.href = '/frontend/welcom'; 
     }
 
 
@@ -59,7 +66,7 @@ function CreateProjet  () {
         <br></br>
       <input
         type="text"
-        value={input1}
+        value={Titre}
         onChange={handleInputChange}
       />
       </label>
@@ -67,7 +74,7 @@ function CreateProjet  () {
 
       <input
         type="text"
-        value={input2}
+        value={Description}
         onChange={handleInputChange2}
       />
 
@@ -79,6 +86,7 @@ function CreateProjet  () {
           <ListSalarieEcriture liste_salarie={liste_salarie} ecriture={Ecriture} setecriture={setEcriture}></ListSalarieEcriture>
           <br></br>
             <button onClick={handleClick}>Creer Projet</button>
+            <br></br><a href="/frontend/welcom">Retour</a>
         </div>
       );
 };
