@@ -19,7 +19,7 @@ function ModificationTache() {
   useEffect(() => {
     const da = async ()=>{
         const data = await axios.get("http://localhost:3003/Tache/"+localStorage.getItem("idProjet"));
-        setListe_Tache(data.data);
+        setListe_Tache(data.data.Taches);
     }
 
     da();

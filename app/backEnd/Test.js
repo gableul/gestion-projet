@@ -178,15 +178,17 @@ app.get("/ProjetbyId/:id",async (req,res) =>{
 
 app.post("/TachebyId",async (req,res) =>{
   const listeIDTache = req.body.liste;
+  console.log("ff"+req.body.liste)
   let liste_Tache = [];
   if(listeIDTache.length == 1){
       const data  = await Tache.findById(listeIDTache[0])
-      res.send(data[0]);
-      return
+      console.log("ici "+data)
+      res.send([data]);
+      
   }else{
       for(let i =0;i<listeIDTache.length;i++){
         const data  = await Tache.findById(listeIDTache[0])
-        liste_Tache.push(data[0]);
+        liste_Tache.push(data);
       }
       res.send(liste_Tache)
 
@@ -208,7 +210,7 @@ app.get("/Tache/:id",async (req,res) =>{
 
     const data = await Projet.findById(req.params.id);
 
-    res.send(data.Taches);
+    res.send(data);
 })
 
 
@@ -220,3 +222,13 @@ app.get("/Tache/:id",async (req,res) =>{
 
 
 
+/*
+        <ul>
+          {Taches.map(task =>(
+            <li key={task._id}>
+              <p>titre : {task.titre}</p>
+
+
+            </li>
+          ))}
+        </ul>*/

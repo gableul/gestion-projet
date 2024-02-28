@@ -14,8 +14,8 @@ function ProjetSolo(props){
         const liste2 = await axios.post("http://localhost:3003/TachebyId",{liste:liste.data[0].Taches})
         const droits = await axios.get("http://localhost:3003/Droit/"+localStorage.getItem("idProjet")+"/"+localStorage.getItem("id"));
         setDroit(droits.data)
-
         setProjects(liste.data)
+        console.log(liste2.data)
         setTaches(liste2.data)
         }
 
@@ -40,14 +40,20 @@ function ProjetSolo(props){
                 <td>{project.nom}</td>
                 <td>{project.Description}</td>
                 <td>{project.Chef_Projet}</td>
-                <td>{project.Taches}</td>
               </tr>
             ))}
           </tbody>
         </table>
 
-        {Droit.Lecteur ? Droit.Chef ? <div> <a href="http://localhost:3000/frontend/CreateTache"><button>Creer Tache</button></a><br></br> <a href="http://localhost:3000/frontend/ModificationTache"><button>Modifier Tache</button></a></div> : <a href="http://localhost:3000/frontend/ModificationTache"><button>Modifier Tache </button></a>:""}
+        {Droit.Lecteur ? <div> <a href="http://localhost:3000/frontend/CreateTache"><button>Creer Tache</button></a><br></br> <a href="http://localhost:3000/frontend/ModificationTache"><button>Modifier Tache</button></a></div> :""}
 
+        <ul>
+          {Taches.map(task =>(
+            <li key={task._id}>
+              <p>titre : {task.titre}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     );
   };
