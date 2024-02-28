@@ -13,11 +13,11 @@ const SignupPage = () => {
       });
   
       // Gérer la réponse, par exemple afficher un message de succès ou rediriger l'utilisateur
-      console.log("Signup successful!", response.data);
+      alert("Compte créer avec succès")
     } catch (error) {
       // Gérer les erreurs, par exemple afficher un message d'erreur ou des détails sur la console
       console.error("Signup failed:", error);
-    }
+    }window.location.href = '/connexion'; 
   };
   
 
@@ -25,7 +25,7 @@ const SignupPage = () => {
     <div>
       <h1>Creer un compte</h1>
       <SignupForm onSubmit={handleSignup} />
-      <a href='/frontend/connexion'>Se connecter</a>
+      <a href='/connexion'>Se connecter</a>
     </div>
   );
 };

@@ -35,7 +35,7 @@ function AfficherProjet(props){
               <p>id : {project._id}</p>
               <p>Nom : {project.nom}</p>
               <p>Description : {project.Description}</p>
-              <button>Clique ici</button>
+              <button>Voir informations</button>
             </li>
 
           ))}

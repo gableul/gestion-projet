@@ -7,7 +7,18 @@ function ProjetSolo(props){
     const [Taches,setTaches] = useState([])
     const [Droit,setDroit] = useState(false);
     const ID = props.Id;
- 
+
+    const handleEtat=(num)=>{
+      if(num==1){
+        return (<td>Non Commencé</td> )
+      }
+      else if(num==2){
+        return (<td>En cours</td> )
+      }
+      else if(num==3){
+        return (<td>Terminé</td> )
+      }
+    }
     useEffect(() => {
         const da = async ()=>{
         const liste = await axios.get("http://localhost:3003/ProjetbyId/"+localStorage.getItem("idProjet"))
@@ -31,7 +42,6 @@ function ProjetSolo(props){
               <th>Nom</th>
               <th>Description</th>
               <th>Chef de Projet</th>
-
             </tr>
           </thead>
           <tbody>
@@ -40,20 +50,38 @@ function ProjetSolo(props){
                 <td>{project.nom}</td>
                 <td>{project.Description}</td>
                 <td>{project.Chef_Projet}</td>
+              
               </tr>
             ))}
           </tbody>
         </table>
 
-        {Droit.Lecteur ? <div> <a href="http://localhost:3004/frontend/CreateTache"><button>Creer Tache</button></a><br></br>
-         <a href="http://localhost:3004/frontend/ModificationTache"><button>Modifier Tache</button></a></div> :""}
+        {Droit.Lecteur ? <div> <a href="http://localhost:3004/CreateTache"><button>Creer Tache</button></a><br></br></div> :""}
 
         <ul>
-          {Taches.map(task =>(
-            <li key={task._id}>
-              <p>titre : {task.titre}</p>
-            </li>
-          ))}
+            <table>
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Effort</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+            {Taches.map(task =>(
+            <tr key={task._id}>
+                  <td>{task.titre}</td>
+                  <td>{task.descrip}</td>
+                  <td>{task.effort}</td> 
+                  {handleEtat(task.etat)}
+                  <td>{Droit.Lecteur ?  <a href="http://localhost:3004/ModificationTache"><button>Modifier Tache</button></a>:""}</td>
+            </tr>
+              ))}
+            </tbody>
+          </table>
+
         </ul>
       </div>
     );

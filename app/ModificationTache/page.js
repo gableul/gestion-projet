@@ -5,16 +5,26 @@ import Tache from '@/app/backEnd/src/models/Tache';
 
 function ModificationTache() {
     const [Liste_Tache,setListe_Tache] = useState([]);
-    const [Tache_choisi,setChangement] = useState();
-    const [newEtat,setnewEtat] = useState();
+    const [Tache_choisi,setChangement] = useState("");
+    const [newEtat,setnewEtat] = useState("");
 
 
 
   // Gestionnaire de soumission pour traiter les données lors de la soumission du formulaire
 
   async function handleSubmit(){
+  if(Tache_choisi.length!=0 || newEtat.length !=0 ){
+  try{
         await axios.patch("http://localhost:3003/ModifierEtatTache/"+Tache_choisi,{etat:newEtat})
+        
+  }catch (error) {
+    console.error("Erreur lors de la modification:", error)
+  }}
+  else{
+    alert("Pas de modification réalisé")
+    window.location.href = '/welcome'; 
   }
+}
 
   useEffect(() => {
     const da = async ()=>{
@@ -48,6 +58,7 @@ function ModificationTache() {
             <option value="1">En cours</option>
             <option value="2">Terminé</option></select>
             <button onClick={handleSubmit} >Modifier</button>
+            <a href="/welcome">Retour</a>
     </div>
 
 

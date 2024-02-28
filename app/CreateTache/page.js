@@ -26,7 +26,7 @@ function CreateTache() {
         console.log("Tâche créée avec succès !");
     } catch (error) {
         console.error("Erreur lors de la création de la tâche :", error);
-    }window.location.href = '/frontend/welcom'; 
+    }window.location.href = '/welcome'; 
 };
 
 
@@ -81,7 +81,7 @@ function CreateTache() {
         </select>
       </div>
       <button onClick={handleSubmit}>Soumettre</button>
-      <br></br><a href="/frontend/welcom">Retour</a>
+      <br></br><a href="/welcome">Retour</a>
       </div>
 
   );

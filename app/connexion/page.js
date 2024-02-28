@@ -19,7 +19,7 @@ const LoginPage = () => {
   
       localStorage.setItem("token",response.data.token)
       localStorage.setItem("id",response.data.user.id)
-      window.location.href = '/frontend/welcom'; 
+      window.location.href = '/welcome'; 
     } catch (error) {
       // Gérer les erreurs, par exemple afficher un message d'erreur ou des détails sur la console
       console.error("Login failed:", error);
@@ -30,7 +30,7 @@ const LoginPage = () => {
     <div>
       <h1>Connexion</h1>
       <LoginForm onSubmit={handleLogin} />
-      <a href="/frontend/signup">Creer un compte</a>
+      <a href="/signup">Creer un compte</a>
     </div>
   );
 };

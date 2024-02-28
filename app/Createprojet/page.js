@@ -43,7 +43,7 @@ function CreateProjet  () {
         const data = await axios.post("http://localhost:3003/creerProjet/"+Titre+"/"+Description+"/"+ Chef_Projet , {Lecture :lecture,Ecriture : Ecriture})
       } catch (error) {
         console.error("Erreur lors de la création de la tâche :", error);
-    }window.location.href = '/frontend/welcom'; 
+    }window.location.href = '/welcome'; 
     }
 
 
@@ -86,7 +86,7 @@ function CreateProjet  () {
           <ListSalarieEcriture liste_salarie={liste_salarie} ecriture={Ecriture} setecriture={setEcriture}></ListSalarieEcriture>
           <br></br>
             <button onClick={handleClick}>Creer Projet</button>
-            <br></br><a href="/frontend/welcom">Retour</a>
+            <br></br><a href="/welcome">Retour</a>
         </div>
       );
 };
