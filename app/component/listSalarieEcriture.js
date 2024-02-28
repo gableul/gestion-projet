@@ -1,17 +1,23 @@
 "use client"
 import React, { useState } from 'react';
 const axios = require("axios")
+let liste_avec_id = []
 
 function ListSalarieEcriture(props){
     const [selectEcriture, setSelectEcriture] = useState("");
     const {setecriture} = props;
     const {ecriture} = props;
 
+
+
     const handleEcritureChange = (e) => {
         const selectedValue = e.target.value;
         if (!ecriture.includes(selectedValue)) {
           setSelectEcriture(selectedValue);
           setecriture([...ecriture, selectedValue]);
+          console.log("ici avec le target " + e.target.value)
+          liste_avec_id.push(parseInt(e.target.value))
+          setSelectEcriture(selectedValue);
         }
       };
       const getNomById = async(id) => {
@@ -22,13 +28,14 @@ function ListSalarieEcriture(props){
       const Liste_salarie_avec_nom = () =>{
         let liste = []
         for(let i =0;i<props.liste_salarie.length;i++){
-            liste.push({id:props.liste_salarie._id,nom:props.liste_salarie.nom,prenom:props.liste_salarie.Prenom});
+            liste.push({id:props.liste_salarie[i]._id,nom:props.liste_salarie[i].nom,prenom:props.liste_salarie[i].Prenom});
         }
         console.log(liste)
         return liste
       }
-
-      const liste = Liste_salarie_avec_nom();
+      const Liste_avec_nom = Liste_salarie_avec_nom()
+      const liste = Liste_avec_nom.filter((element) => {return liste_avec_id.includes(parseInt(element.id))});
+      console.log("ici la liste avec les noms des bon gars " + liste)
 
 
 
@@ -54,10 +61,10 @@ function ListSalarieEcriture(props){
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {ecriture.map((selected) => (
-                                        <tr key={selected}>
-                                            <td>{selected}</td>
-                                            <td></td>
+                                    {selectEcriture && liste.map(selected => (
+                                        <tr key={selected.id}>
+                                            <td>{selected.nom}</td>
+                                            <td>{selected.prenom}</td>
                                         </tr>
                                     ))}
                                 </tbody>

@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-
+let liste_avec_id = []
 function ListSalarieLecture(props){
     const [selectLecture, setSelectLecture] = useState("");
     const {lecture} = props;
@@ -9,8 +9,9 @@ function ListSalarieLecture(props){
     const handleLectureChange = (e) => {
         const selectedValue = e.target.value;
         if (!lecture.includes(selectedValue)) {
-          setSelectLecture(selectedValue);
           setlecture([...lecture, selectedValue]);
+          liste_avec_id.push(parseInt(e.target.value))
+          setSelectLecture(selectedValue);
         }
       };
     
@@ -19,6 +20,19 @@ function ListSalarieLecture(props){
         return selectedSalarie ? selectedSalarie.nom : '';
       };
 
+      const Liste_salarie_avec_nom = () =>{
+        let liste = []
+        for(let i =0;i<props.liste_salarie.length;i++){
+            liste.push({id:props.liste_salarie[i]._id,nom:props.liste_salarie[i].nom,prenom:props.liste_salarie[i].Prenom});
+        }
+        console.log(liste)
+        return liste
+      }
+
+      const Liste_avec_nom = Liste_salarie_avec_nom()
+      console.log("ici pour lecture "+ Liste_avec_nom)
+      const liste = Liste_avec_nom.filter((element) => {return liste_avec_id.includes(parseInt(element.id))});
+      console.log("ici pour lecture bon truc" + liste)
     return (
         <>
         Lecteur:
@@ -42,10 +56,10 @@ function ListSalarieLecture(props){
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {lecture.map((selected) => (
-                                        <tr key={selected}>
-                                            <td>{selected}</td>
-                                            <td></td>
+                                    {selectLecture && liste.map((selected) => (
+                                        <tr key={selected.id}>
+                                            <td>{selected.nom}</td>
+                                            <td>{selected.prenom}</td>
                                         </tr>
                                     ))}
                                 </tbody>
