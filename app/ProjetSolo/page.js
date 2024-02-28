@@ -33,6 +33,10 @@ function ProjetSolo(props){
         da();
       },[ID]);
 
+      const changementTache = (task)=>{
+        localStorage.setItem("IdTache",task._id)
+        console.log("ici c'est l'id que je veux voir" + localStorage.getItem("IdTache"))
+      }
     return (
       <div>
         <h1>Projet</h1>
@@ -56,7 +60,7 @@ function ProjetSolo(props){
           </tbody>
         </table>
 
-        {Droit.Lecteur ? <div> <a href="http://localhost:3004/CreateTache"><button>Creer Tache</button></a><br></br></div> :""}
+        {Droit.Chef ? <div> <a href="http://localhost:3000/CreateTache"><button>Creer Tache</button></a><br></br><a href="http://localhost:3000/ModifierProjet"><button>Modifier Projet</button></a></div>:Droit.Lecteur ? <div> <a href="http://localhost:3000/CreateTache"><button>Creer Tache</button></a><br></br></div>:""  }
 
         <ul>
             <table>
@@ -76,7 +80,7 @@ function ProjetSolo(props){
                   <td>{task.descrip}</td>
                   <td>{task.effort}</td> 
                   {handleEtat(task.etat)}
-                  <td>{Droit.Lecteur ?  <a href="http://localhost:3004/ModificationTache"><button>Modifier Tache</button></a>:""}</td>
+                  <td>{Droit.Lecteur ?  <a href="http://localhost:3000/ModificationTache"><button onClick={changementTache(task)}>Modifier Tache</button></a>:""}</td>
             </tr>
               ))}
             </tbody>

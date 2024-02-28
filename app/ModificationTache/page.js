@@ -15,6 +15,8 @@ function ModificationTache() {
   async function handleSubmit(){
   if(Tache_choisi.length!=0 || newEtat.length !=0 ){
   try{
+      console.log("c'est ca que je veux voir " + localStorage.getItem("IdTache"))
+        setChangement(localStorage.getItem("IdTache"))
         await axios.patch("http://localhost:3003/ModifierEtatTache/"+Tache_choisi,{etat:newEtat})
         
   }catch (error) {

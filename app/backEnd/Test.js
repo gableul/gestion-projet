@@ -160,12 +160,17 @@ app.get("/GetNom/:id",async (req,res)=>{
 
 app.get("/Projet/:id",async (req,res) =>{
   const data1 = await Projet.find({Ecriture: {$in:[req.params.id]}});
-  const data2 = await Projet.find({Lecture: {$in:[req.params.id]}});
+  const data2 = await Projet.find({Lecteur: {$in:[req.params.id]}});
+  console.log("data 2 "+data2 )
   let liste = [];
   if(data1.length == 0){
     liste = data2
-  }else{
+  }if(data1.length != 0 && data2.length == 0){
+    console.log("icic")
     liste = data1
+  }else{
+    console.log("ca rente par la")
+    liste = [...data1,...data2]
   }
 
   res.send(liste);
@@ -186,8 +191,9 @@ app.post("/TachebyId",async (req,res) =>{
       res.send([data]);
       
   }else{
+      console.log(listeIDTache+"dsdsdsds")
       for(let i =0;i<listeIDTache.length;i++){
-        const data  = await Tache.findById(listeIDTache[0])
+        const data  = await Tache.findById(listeIDTache[i])
         liste_Tache.push(data);
       }
       res.send(liste_Tache)
@@ -199,7 +205,7 @@ app.get("/Droit/:IdProjet/:IdUser",async (req,res) => {
     const data = await Projet.findById(req.params.IdProjet);
     let Droit_lecteur = false
     let Droit_Chef = data.Chef_Projet == req.params.IdUser
-    if(data.Lecteur.includes(req.params.IdUser)){
+    if(data.Ecriture.includes(req.params.IdUser)){
         Droit_lecteur = true;
     }
 
@@ -211,6 +217,16 @@ app.get("/Tache/:id",async (req,res) =>{
     const data = await Projet.findById(req.params.id);
 
     res.send(data);
+})
+
+app.patch("/ModifierProjet/:id",async (req,res) => {
+      const data = req.body
+      console.log(data)
+      await Projet.findByIdAndUpdate(req.params.id,{Description:data.Description,nom:data.Nom})
+      console.log("Modification de projet finis ");
+
+      res.send("Projet a bien été modifié")
+
 })
 
 
