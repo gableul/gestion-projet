@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import LoginForm from '@/app/component/LoginForm';
+import LoginForm from '../component/LoginForm';
 import axios, { Axios } from 'axios';
 import Cookies from 'js-cookie';
 
@@ -12,7 +12,7 @@ const LoginPage = () => {
   const handleLogin = async (formData) => {
     console.log(formData)
     try {
-      const response = await axios.post("http://localhost:3003/users/login", {
+      const response = await axios.post("http://localhost:3000/api/users/login", {
         password: formData.password,
         nom: formData.name,
       });

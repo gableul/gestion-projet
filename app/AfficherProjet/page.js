@@ -11,9 +11,9 @@ function AfficherProjet(props){
 
     useEffect(() => {
         const da = async ()=>{
-        const liste = await axios.get("http://localhost:3003/Projet/"+localStorage.getItem("id"))
+        const liste = await axios.get("http://localhost:3000/api/Projet?id="+localStorage.getItem("id"))
         console.log(liste.data)
-        setProjects(liste.data)
+        setProjects(liste.data.data)
         }
 
         da();

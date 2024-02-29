@@ -1,7 +1,7 @@
 "use client"
 import React, { useState,useEffect } from 'react';
 import axios, { Axios } from 'axios';
-import Tache from '@/app/backEnd/src/models/Tache';
+
 
 function ModificationProjet() {
     const [description, setDescription] = useState('');
@@ -13,7 +13,7 @@ function ModificationProjet() {
 
   async function handleSubmit(){
 
-        await axios.patch("http://localhost:3003/ModifierProjet/"+localStorage.getItem("idProjet"),{Description:description,Nom:nom})
+        await axios.patch("http://localhost:3000/api/ModifierProjet?id="+localStorage.getItem("idProjet"),{Description:description,Nom:nom})
         /*alert("Mise a jour effectué")
         window.location.href = '/welcome'; */
 

@@ -22,13 +22,14 @@ function ProjetSolo(props){
     }
     useEffect(() => {
         const da = async ()=>{
-        const liste = await axios.get("http://localhost:3003/ProjetbyId/"+localStorage.getItem("idProjet"))
-        const liste2 = await axios.post("http://localhost:3003/TachebyId",{liste:liste.data[0].Taches})
-        const droits = await axios.get("http://localhost:3003/Droit/"+localStorage.getItem("idProjet")+"/"+localStorage.getItem("id"));
+        const liste = await axios.get("http://localhost:3000/api/ProjetbyId?id="+localStorage.getItem("idProjet"))
+        const liste2 = await axios.post("http://localhost:3000/api/TachebyId",{liste:liste.data.data[0].Taches})
+        console.log("Ici c'est gatito le chat  "+liste.data.data[0].Taches)
+        const droits = await axios.get("http://localhost:3000/api/Droit?IdProjet="+localStorage.getItem("idProjet")+"&IdUser="+localStorage.getItem("id"));
         setDroit(droits.data)
-        setProjects(liste.data)
-        console.log(liste2.data)
-        setTaches(liste2.data)
+        setProjects(liste.data.data)
+        console.log(liste2.data.data) 
+        setTaches(liste2.data.data)
         }
 
         da();

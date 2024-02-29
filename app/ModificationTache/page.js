@@ -1,7 +1,7 @@
 "use client"
 import React, { useState,useEffect } from 'react';
 import axios, { Axios } from 'axios';
-import Tache from '@/app/backEnd/src/models/Tache';
+
 
 function ModificationTache() {
     const [Liste_Tache,setListe_Tache] = useState([]);
@@ -17,7 +17,7 @@ function ModificationTache() {
   try{
       console.log("c'est ca que je veux voir " + localStorage.getItem("IdTache"))
         setChangement(localStorage.getItem("IdTache"))
-        await axios.patch("http://localhost:3003/ModifierEtatTache/"+Tache_choisi,{etat:newEtat})
+        await axios.patch("http://localhost:3000/api/ModifierEtatTache?id="+Tache_choisi,{etat:newEtat})
         
   }catch (error) {
     console.error("Erreur lors de la modification:", error)
@@ -30,8 +30,8 @@ function ModificationTache() {
 
   useEffect(() => {
     const da = async ()=>{
-        const data = await axios.get("http://localhost:3003/Tache/"+localStorage.getItem("idProjet"));
-        setListe_Tache(data.data.Taches);
+        const data = await axios.get("http://localhost:3000/api/Tache?id="+localStorage.getItem("IdTache"));
+        setListe_Tache(data.data.data.Taches);
     }
 
     da();

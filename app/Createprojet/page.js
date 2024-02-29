@@ -40,7 +40,7 @@ function CreateProjet  () {
         alert("Merci de remplir tous les champs")
       }
         console.log("Lecture : "+lecture+" Ecriture : "+ Ecriture+" Chef : "+Chef_Projet)
-        const data = await axios.post("http://localhost:3003/creerProjet/"+Titre+"/"+Description+"/"+ Chef_Projet , {Lecture :lecture,Ecriture : Ecriture})
+        const data = await axios.post("http://localhost:3000/api/creerProjet/"+Titre+"/"+Description+"/"+ Chef_Projet , {Lecture :lecture,Ecriture : Ecriture})
       } catch (error) {
         console.error("Erreur lors de la création de la tâche :", error);
     }window.location.href = '/welcome'; 
@@ -49,7 +49,7 @@ function CreateProjet  () {
 
     useEffect(() => {
         const da = async ()=>{
-        const liste = await axios.get("http://localhost:3003/Salarie")
+        const liste = await axios.get("http://localhost:3000/api/Salarie")
         console.log(liste.data)
         setListe_salarie(liste.data.salarie)
         }
