@@ -7,15 +7,16 @@ function ProjetSolo(props){
     const [Taches,setTaches] = useState([])
     const [Droit,setDroit] = useState(false);
     const ID = props.Id;
+    const [IdTache,setIdTache] = useState(0)
 
     const handleEtat=(num)=>{
-      if(num==1){
+      if(num==0){
         return (<td>Non Commencé</td> )
       }
-      else if(num==2){
+      else if(num==1){
         return (<td>En cours</td> )
       }
-      else if(num==3){
+      else if(num==2){
         return (<td>Terminé</td> )
       }
     }
@@ -33,9 +34,12 @@ function ProjetSolo(props){
         da();
       },[ID]);
 
-      const changementTache = (task)=>{
-        localStorage.setItem("IdTache",task._id)
-        console.log("ici c'est l'id que je veux voir" + localStorage.getItem("IdTache"))
+      const changementTache = (id)=>{
+          localStorage.setItem("IdTache",id)
+          window.location.href = '/ModificationTache';
+
+        
+        console.log("ici c'est l'id que je veux voir  ::" + id)
       }
     return (
       <div>
@@ -63,7 +67,44 @@ function ProjetSolo(props){
         {Droit.Chef ? <div> <a href="http://localhost:3000/CreateTache"><button>Creer Tache</button></a><br></br><a href="http://localhost:3000/ModifierProjet"><button>Modifier Projet</button></a></div>:Droit.Lecteur ? <div> <a href="http://localhost:3000/CreateTache"><button>Creer Tache</button></a><br></br></div>:""  }
 
         <ul>
-            <table>
+
+        <table>
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Effort</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+            {Taches.map(task =>(
+            <tr key={task._id} >
+                  <td>{task.titre}</td>
+                  <td>{task.description}</td>
+                  <td>{task.effort}</td> 
+                  <td>{handleEtat(task.etat)}</td>
+                  <td>{Droit.Lecteur ? <button onClick={() => changementTache(task._id)}>Modifier Tache</button> : ""}</td>
+
+            </tr>
+              ))}
+            </tbody>
+          </table>
+
+
+
+        </ul>
+      </div>
+    );
+  };
+  
+
+
+export default ProjetSolo;
+
+
+/*<table>
             <thead>
               <tr>
                 <th>Nom</th>
@@ -84,13 +125,20 @@ function ProjetSolo(props){
             </tr>
               ))}
             </tbody>
-          </table>
-
-        </ul>
-      </div>
-    );
-  };
-  
+          </table>*/
 
 
-export default ProjetSolo;
+          /*
+                  {Taches.map(task =>(
+          <div>
+            <li key={task._id} onClick={changementTache(task._id)}>
+                <p>Nom : {task.titre}</p>
+                <p>Description : {task.descrip}</p>
+                <p>Effort : {task.effort}</p>
+                <p>Status : {handleEtat(task.etat)}</p>
+                <p>{Droit.Lecteur ?  <button>Modifier Tache</button>:""}</p>
+            </li>
+            
+            </div>
+              ))}
+              */

@@ -5,7 +5,7 @@ import Tache from '@/app/backEnd/src/models/Tache';
 
 function ModificationTache() {
     const [Liste_Tache,setListe_Tache] = useState([]);
-    const [Tache_choisi,setChangement] = useState("");
+    const [Tache_choisi,setChangement] = useState(localStorage.getItem("IdTache"));
     const [newEtat,setnewEtat] = useState("");
 
 
@@ -41,18 +41,7 @@ function ModificationTache() {
 
   return (
     <div>
-        <select
-          id="etat"
-          name="etat"
-          value={Tache_choisi}
-          onChange={(e) => setChangement(e.target.value)}
-        >
-            <option value="">Selectionner une Tache</option>
-            {Liste_Tache.map((element => (
-                <option key={element} value={element}>{element}</option>
-            )))}
 
-        </select>
 
         <select value={newEtat} onChange={(e)=>setnewEtat(e.target.value)}>          
             <option value="">Sélectionnez l'état</option>
@@ -68,3 +57,17 @@ function ModificationTache() {
 }
 
 export default ModificationTache;
+
+
+/*<select
+          id="etat"
+          name="etat"
+          value={Tache_choisi}
+          onChange={(e) => setChangement(e.target.value)}
+        >
+            <option value="">Selectionner une Tache</option>
+            {Liste_Tache.map((element => (
+                <option key={element} value={element}>{element}</option>
+            )))}
+
+        </select>*/

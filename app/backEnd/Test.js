@@ -161,19 +161,33 @@ app.get("/GetNom/:id",async (req,res)=>{
 app.get("/Projet/:id",async (req,res) =>{
   const data1 = await Projet.find({Ecriture: {$in:[req.params.id]}});
   const data2 = await Projet.find({Lecteur: {$in:[req.params.id]}});
-  console.log("data 2 "+data2 )
   let liste = [];
+  let liste_sans_doublon = [];
+  let liste_with_id = [];
   if(data1.length == 0){
     liste = data2
   }if(data1.length != 0 && data2.length == 0){
-    console.log("icic")
+
     liste = data1
   }else{
     console.log("ca rente par la")
     liste = [...data1,...data2]
   }
 
-  res.send(liste);
+  for(let i =0;i<liste.length;i++){
+      if(i ==0){
+        liste_sans_doublon.push(liste[i])
+        liste_with_id.push(liste[i]._id)
+      }else{
+        if(!liste_with_id.includes(liste[i]._id)){
+            liste_sans_doublon.push(liste[i])
+            liste_with_id.push(liste[i]._id)
+        }
+      }
+  }
+
+
+  res.send(liste_sans_doublon);
 })
 
 app.get("/ProjetbyId/:id",async (req,res) =>{
