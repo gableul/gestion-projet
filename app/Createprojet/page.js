@@ -1,9 +1,9 @@
 "use client"
 import React, { useState,useEffect } from 'react';
 import axios, { Axios } from 'axios';
-import ListSalarieEcriture from '@/app/component/listSalarieEcriture';
-import ChefProjet from '@/app/component/chefProjet';
-import ListSalarieLecture from '@/app/component/listSalarieLecture';
+import ListSalarieEcriture from '../component/listSalarieEcriture';
+import ChefProjet from '../component/chefProjet';
+import ListSalarieLecture from '../component/listSalarieLecture';
 
 
 
@@ -40,7 +40,7 @@ function CreateProjet  () {
         alert("Merci de remplir tous les champs")
       }
         console.log("Lecture : "+lecture+" Ecriture : "+ Ecriture+" Chef : "+Chef_Projet)
-        const data = await axios.post("http://localhost:3000/api/creerProjet/"+Titre+"/"+Description+"/"+ Chef_Projet , {Lecture :lecture,Ecriture : Ecriture})
+        const data = await axios.post("http://localhost:3000/api/CreerProjet?nom="+Titre+"&description="+Description+"&chef="+ Chef_Projet , {Lecture :lecture,Ecriture : Ecriture})
       } catch (error) {
         console.error("Erreur lors de la création de la tâche :", error);
     }window.location.href = '/welcome'; 
