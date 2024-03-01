@@ -60,7 +60,7 @@ function ProjetSolo(props){
           </tbody>
         </table>
 
-        {Droit.Chef ? <div> <a className="lien" href="http://localhost:3000/CreateTache">Creer Tache</a><br></br><a className="lien" href="http://localhost:3000/ModifierProjet">Modifier Projet</a></div>:Droit.Lecteur ? <div> <a className="lien" href="http://localhost:3000/CreateTache"><button>Creer Tache</button></a><br></br></div>:""  }
+        {Droit.Chef ? <div> <a className="lien" href="http://localhost:3000/CreateTache">Creer Tache</a><br></br><a className="lien" href="http://localhost:3000/ModifierProjet">Modifier Projet</a></div>:Droit.Lecteur ? <div> <a className="lien" href="http://localhost:3000/CreateTache">Creer Tache</a><br></br></div>:""  }
 
         
 
