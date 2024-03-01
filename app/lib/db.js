@@ -8,7 +8,6 @@ global.mongoose = {
 export async function dbConnect() {
   try {
     if (global.mongoose && global.mongoose.conn) {
-      console.log("Connected from previous");
       return global.mongoose.conn;
     } else {
       const conString = "mongodb+srv://lenny30:F2fwBNweWmd5nnj3@cluster0.9cbv1pt.mongodb.net/";
@@ -22,7 +21,6 @@ export async function dbConnect() {
         promise,
       };
 
-      console.log("Newly connected");
       return await promise;
     }
   } catch (error) {

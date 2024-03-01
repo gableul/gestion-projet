@@ -59,15 +59,3 @@ function ModificationTache() {
 export default ModificationTache;
 
 
-/*<select
-          id="etat"
-          name="etat"
-          value={Tache_choisi}
-          onChange={(e) => setChangement(e.target.value)}
-        >
-            <option value="">Selectionner une Tache</option>
-            {Liste_Tache.map((element => (
-                <option key={element} value={element}>{element}</option>
-            )))}
-
-        </select>*/

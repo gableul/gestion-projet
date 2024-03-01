@@ -39,7 +39,6 @@ function CreateProjet  () {
       if((lecture.length==0&&Ecriture.length==0)||Chef_Projet.length==0|Titre.length==0||lecture.length==0){
         alert("Merci de remplir tous les champs")
       }
-        console.log("Lecture : "+lecture+" Ecriture : "+ Ecriture+" Chef : "+Chef_Projet)
         const data = await axios.post("http://localhost:3000/api/CreerProjet?nom="+Titre+"&description="+Description+"&chef="+ Chef_Projet , {Lecture :lecture,Ecriture : Ecriture})
       } catch (error) {
         console.error("Erreur lors de la création de la tâche :", error);
@@ -50,7 +49,6 @@ function CreateProjet  () {
     useEffect(() => {
         const da = async ()=>{
         const liste = await axios.get("http://localhost:3000/api/Salarie")
-        console.log(liste.data)
         setListe_salarie(liste.data.salarie)
         }
 

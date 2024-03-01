@@ -15,24 +15,18 @@ function ListSalarieLecture(props){
         }
       };
     
-      const getNomById = (id) => {
-        const selectedSalarie = props.liste_salarie.find((item) => item._id === id);
-        return selectedSalarie ? selectedSalarie.nom : '';
-      };
+      
 
       const Liste_salarie_avec_nom = () =>{
         let liste = []
         for(let i =0;i<props.liste_salarie.length;i++){
             liste.push({id:props.liste_salarie[i]._id,nom:props.liste_salarie[i].nom,prenom:props.liste_salarie[i].Prenom});
         }
-        console.log(liste)
         return liste
       }
 
       const Liste_avec_nom = Liste_salarie_avec_nom()
-      console.log("ici pour lecture "+ Liste_avec_nom)
       const liste = Liste_avec_nom.filter((element) => {return liste_avec_id.includes(parseInt(element.id))});
-      console.log("ici pour lecture bon truc" + liste)
     return (
         <>
         Lecteur:

@@ -21,9 +21,7 @@ function CreateTache() {
             effort: Effort,
             etat: Etat,
             idP: localStorage.getItem("idProjet")
-        });
-        
-        console.log("Tâche créée avec succès !");
+        });       
     } catch (error) {
         console.error("Erreur lors de la création de la tâche :", error);
     }window.location.href = '/welcome'; 

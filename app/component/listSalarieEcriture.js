@@ -15,27 +15,21 @@ function ListSalarieEcriture(props){
         if (!ecriture.includes(selectedValue)) {
           setSelectEcriture(selectedValue);
           setecriture([...ecriture, selectedValue]);
-          console.log("ici avec le target " + e.target.value)
           liste_avec_id.push(parseInt(e.target.value))
           setSelectEcriture(selectedValue);
         }
       };
-      const getNomById = async(id) => {
-        const data = await axios.get("http://localhost:3003/GetNom/"+id);
-        return data[0];
-      };
+
 
       const Liste_salarie_avec_nom = () =>{
         let liste = []
         for(let i =0;i<props.liste_salarie.length;i++){
             liste.push({id:props.liste_salarie[i]._id,nom:props.liste_salarie[i].nom,prenom:props.liste_salarie[i].Prenom});
         }
-        console.log(liste)
         return liste
       }
       const Liste_avec_nom = Liste_salarie_avec_nom()
       const liste = Liste_avec_nom.filter((element) => {return liste_avec_id.includes(parseInt(element.id))});
-      console.log("ici la liste avec les noms des bon gars " + liste)
 
 
 

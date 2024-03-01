@@ -7,7 +7,6 @@ function ProjetSolo(props){
     const [Taches,setTaches] = useState([])
     const [Droit,setDroit] = useState(false);
     const ID = props.Id;
-    const [IdTache,setIdTache] = useState(0)
 
     const handleEtat=(num)=>{
       if(num==0){
@@ -24,11 +23,9 @@ function ProjetSolo(props){
         const da = async ()=>{
         const liste = await axios.get("http://localhost:3000/api/ProjetbyId?id="+localStorage.getItem("idProjet"))
         const liste2 = await axios.post("http://localhost:3000/api/TachebyId",{liste:liste.data.data[0].Taches})
-        console.log("Ici c'est gatito le chat  "+liste.data.data[0].Taches)
         const droits = await axios.get("http://localhost:3000/api/Droit?IdProjet="+localStorage.getItem("idProjet")+"&IdUser="+localStorage.getItem("id"));
         setDroit(droits.data)
         setProjects(liste.data.data)
-        console.log(liste2.data.data) 
         setTaches(liste2.data.data)
         }
 
@@ -40,7 +37,6 @@ function ProjetSolo(props){
           window.location.href = '/ModificationTache';
 
         
-        console.log("ici c'est l'id que je veux voir  ::" + id)
       }
     return (
       <div>

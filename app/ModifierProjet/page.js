@@ -14,9 +14,7 @@ function ModificationProjet() {
   async function handleSubmit(){
 
         await axios.patch("http://localhost:3000/api/ModifierProjet?id="+localStorage.getItem("idProjet"),{Description:description,Nom:nom})
-        /*alert("Mise a jour effectué")
-        window.location.href = '/welcome'; */
-
+        
 
 }
 

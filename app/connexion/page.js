@@ -10,7 +10,6 @@ const LoginPage = () => {
 
 
   const handleLogin = async (formData) => {
-    console.log(formData)
     try {
       const response = await axios.post("http://localhost:3000/api/users/login", {
         password: formData.password,
@@ -21,7 +20,6 @@ const LoginPage = () => {
       localStorage.setItem("id",response.data.user.id)
       window.location.href = '/welcome'; 
     } catch (error) {
-      // Gérer les erreurs, par exemple afficher un message d'erreur ou des détails sur la console
       console.error("Login failed:", error);
     }
   };
