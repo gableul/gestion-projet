@@ -34,10 +34,9 @@ function ProjetSolo(props){
 
       const changementTache = (id)=>{
           localStorage.setItem("IdTache",id)
-          window.location.href = '/ModificationTache';
-
-        
+          window.location.href = '/ModificationTache';  
       }
+
     return (
       <div>
         <h1>Projet</h1>
@@ -61,9 +60,9 @@ function ProjetSolo(props){
           </tbody>
         </table>
 
-        {Droit.Chef ? <div> <a href="http://localhost:3000/CreateTache"><button>Creer Tache</button></a><br></br><a href="http://localhost:3000/ModifierProjet"><button>Modifier Projet</button></a></div>:Droit.Lecteur ? <div> <a href="http://localhost:3000/CreateTache"><button>Creer Tache</button></a><br></br></div>:""  }
+        {Droit.Chef ? <div> <a className="lien" href="http://localhost:3000/CreateTache">Creer Tache</a><br></br><a className="lien" href="http://localhost:3000/ModifierProjet">Modifier Projet</a></div>:Droit.Lecteur ? <div> <a className="lien" href="http://localhost:3000/CreateTache"><button>Creer Tache</button></a><br></br></div>:""  }
 
-        <ul>
+        
 
         <table>
             <thead>
@@ -91,7 +90,7 @@ function ProjetSolo(props){
 
 
 
-        </ul>
+        
       </div>
     );
   };
@@ -100,42 +99,3 @@ function ProjetSolo(props){
 
 export default ProjetSolo;
 
-
-/*<table>
-            <thead>
-              <tr>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Effort</th>
-                <th>Status</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-            {Taches.map(task =>(
-            <tr key={task._id}>
-                  <td>{task.titre}</td>
-                  <td>{task.descrip}</td>
-                  <td>{task.effort}</td> 
-                  {handleEtat(task.etat)}
-                  <td>{Droit.Lecteur ?  <a href="http://localhost:3000/ModificationTache"><button onClick={changementTache(task)}>Modifier Tache</button></a>:""}</td>
-            </tr>
-              ))}
-            </tbody>
-          </table>*/
-
-
-          /*
-                  {Taches.map(task =>(
-          <div>
-            <li key={task._id} onClick={changementTache(task._id)}>
-                <p>Nom : {task.titre}</p>
-                <p>Description : {task.descrip}</p>
-                <p>Effort : {task.effort}</p>
-                <p>Status : {handleEtat(task.etat)}</p>
-                <p>{Droit.Lecteur ?  <button>Modifier Tache</button>:""}</p>
-            </li>
-            
-            </div>
-              ))}
-              */

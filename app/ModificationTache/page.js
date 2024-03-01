@@ -18,6 +18,7 @@ function ModificationTache() {
       console.log("c'est ca que je veux voir " + localStorage.getItem("IdTache"))
         setChangement(localStorage.getItem("IdTache"))
         await axios.patch("http://localhost:3000/api/ModifierEtatTache?id="+Tache_choisi,{etat:newEtat})
+        window.location.href = '/welcome'; 
         
   }catch (error) {
     console.error("Erreur lors de la modification:", error)
@@ -41,7 +42,7 @@ function ModificationTache() {
             <option value="1">En cours</option>
             <option value="2">Terminé</option></select>
             <button onClick={handleSubmit} >Modifier</button>
-            <a href="/welcome">Retour</a>
+            <a className="lien" href="/welcome">Retour</a>
     </div>
 
 

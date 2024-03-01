@@ -25,7 +25,7 @@ const SignupPage = () => {
     <div>
       <h1>Creer un compte</h1>
       <SignupForm onSubmit={handleSignup} />
-      <a href='/connexion'>Se connecter</a>
+      <a className="lien" href='/connexion'>Se connecter</a>
     </div>
   );
 };

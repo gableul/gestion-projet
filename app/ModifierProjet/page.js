@@ -12,9 +12,17 @@ function ModificationProjet() {
   // Gestionnaire de soumission pour traiter les données lors de la soumission du formulaire
 
   async function handleSubmit(){
-
+    if(description.length==0|| nom.length==0){
+      alert("Aucune modification n'as été réalisé !")
+      window.location.href = '/welcome';  
+    }else{
+    try{
         await axios.patch("http://localhost:3000/api/ModifierProjet?id="+localStorage.getItem("idProjet"),{Description:description,Nom:nom})
-        
+    }catch(error){
+      console.error("Erreur lors de la modification:", error)
+    }window.location.href = '/welcome';  
+
+  }  
 
 }
 
@@ -41,7 +49,7 @@ function ModificationProjet() {
             />
 
             <button onClick={handleSubmit} >Modifier</button>
-            <a href="/welcome">Retour</a>
+            <a className="lien" href="/welcome">Retour</a>
     </div>
 
 

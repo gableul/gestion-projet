@@ -1,7 +1,7 @@
 
 .liste-projets {
-    max-height: 300px; /* Définissez la hauteur maximale de la liste ici */
-    overflow-y: auto; /* Ajoute une barre de défilement vertical si nécessaire */
+    max-height: 350px; 
+    overflow-y: auto; 
   }
   
   .liste-projets li {
@@ -16,3 +16,65 @@
   .liste-projets button {
     margin-top: 5px;
   }
+
+  .lien{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #a2abb4;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+/* Modern Table Style */
+table{
+  font-family: Arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+table table {
+  width: 60%;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: left;
+}
+
+table th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+  background-color: #e9e9e9;
+}
+
+
+@media screen and (max-width: 500px) {
+  table{
+    overflow-x: auto;
+  }
+
+  table th,
+  table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

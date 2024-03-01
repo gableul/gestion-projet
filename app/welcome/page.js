@@ -11,7 +11,7 @@ function Welcome(){
         <>
         <button onClick={handleLogOut}>Deconnexion</button>
         <AfficherProjet></AfficherProjet>
-        <a href="/Createprojet">Creer un projet</a>
+        <a className="lien" href="/Createprojet">Creer un projet</a>
         </>
     )
 };

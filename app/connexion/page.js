@@ -28,7 +28,7 @@ const LoginPage = () => {
     <div>
       <h1>Connexion</h1>
       <LoginForm onSubmit={handleLogin} />
-      <a href="/signup">Creer un compte</a>
+      <a className="lien" href="/signup">Creer un compte</a>
     </div>
   );
 };
