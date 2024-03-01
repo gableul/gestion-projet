@@ -18,17 +18,14 @@ export async function POST(req:NextRequest){
     const A = await dbConnect();
     const parametre  = req.nextUrl.searchParams
     let listeIDTache = await req.json()
-    console.log("ici c'est dans l'api "+listeIDTache)
     let liste_Tache = [];
     if(listeIDTache.liste.length == 1){
         const data  = await Tache.findById(listeIDTache.liste[0])
-        console.log("ici "+data)
         return NextResponse.json({
             data : [data]
         })
         
     }else{
-        console.log(listeIDTache+"dsdsdsds")
         for(let i =0;i<listeIDTache.liste.length;i++){
           const data  = await Tache.findById(listeIDTache.liste[i])
           liste_Tache.push(data);

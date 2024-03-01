@@ -28,14 +28,6 @@ function ModificationTache() {
   }
 }
 
-  useEffect(() => {
-    const da = async ()=>{
-        const data = await axios.get("http://localhost:3000/api/Tache?id="+localStorage.getItem("IdTache"));
-        setListe_Tache(data.data.data.Taches);
-    }
-
-    da();
-  },[]);
 
 
 

@@ -1,0 +1,18 @@
+
+.liste-projets {
+    max-height: 300px; /* Définissez la hauteur maximale de la liste ici */
+    overflow-y: auto; /* Ajoute une barre de défilement vertical si nécessaire */
+  }
+  
+  .liste-projets li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc; /* Ligne de séparation entre chaque élément de la liste */
+  }
+  
+  .liste-projets li:last-child {
+    border-bottom: none; /* Supprime la ligne de séparation du dernier élément */
+  }
+  
+  .liste-projets button {
+    margin-top: 5px;
+  }

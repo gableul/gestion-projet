@@ -36,7 +36,6 @@ export async function POST(req:NextRequest,res){
             const token = jwt.sign({ _id: user._id }, "foo");
             user.AuthTokens = token;
             await user.save();
-            console.log(user);
             return NextResponse.json({ user: { prenom: user.prenom, nom: user.nom, id: user._id }, token});
         } else {
             return NextResponse.json({ reponse: "mauvais mot de passe" });

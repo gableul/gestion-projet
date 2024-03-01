@@ -31,7 +31,6 @@ export async function GET(req:NextRequest){
   
       liste = data1
     }else{
-      console.log("ca rente par la")
       liste = [...data1,...data2]
     }
   

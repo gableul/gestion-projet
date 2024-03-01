@@ -18,7 +18,7 @@ export async function POST(req:NextRequest){
     const A = await dbConnect();
     const parametre  = req.nextUrl.searchParams
     const data = await req.json();
-    console.log(parametre.get("chef"))
+   
     const project = new Projet(
       {
         _id:parseInt(Math.random() * (10000000000000 - 0) + 0),
@@ -29,7 +29,6 @@ export async function POST(req:NextRequest){
         Lecteur:data.Lecture
       }
     )
-    console.log(project)
     project.save();
     return NextResponse.json({
         reponse:"Création du projet finis !"

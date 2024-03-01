@@ -22,7 +22,3 @@ export async function GET(){
     })
 }
 
-
-/*NextResponse.json({
-    salarie:data
-})*/

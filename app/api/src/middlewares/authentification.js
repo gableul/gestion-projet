@@ -5,7 +5,6 @@ const User = require("../models/Salarie");
 const authentification =  async(req,res,next) => {
     try{
         const authToken = req.header("Authorization").replace("Bearer ","");
-        console.log(authToken)
         const decodeToken = jwt.verify(authToken,"foo");
         const user = await User.findOne({_id:decodeToken._id,AuthTokens:authToken});
 

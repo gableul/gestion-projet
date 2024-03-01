@@ -2,17 +2,18 @@
 import React, { useState,useEffect } from 'react';
 import axios, { Axios } from 'axios';
 import ProjetSolo from '../ProjetSolo/page';
+import "../styles/global.css"
 
 
 function AfficherProjet(props){
     const [projects, setProjects] = useState([]);
-    const [affiche,setaffiche] = useState(false)
+
     const [idProjet,setidProjet] = useState(null);
 
     useEffect(() => {
         const da = async ()=>{
         const liste = await axios.get("http://localhost:3000/api/Projet?id="+localStorage.getItem("id"))
-        console.log(liste.data)
+
         setProjects(liste.data.data)
         }
 
@@ -21,15 +22,14 @@ function AfficherProjet(props){
     const Clique = (id) =>{
       setidProjet(id)
       localStorage.setItem("idProjet",id)
-      console.log(localStorage.getItem("idProjet"))
+
     }
 
 
     return (
       <div>
         <h1>Liste des projets</h1>
-        <ul>
-          {console.log(projects)}
+        <ul className='liste-projets'>
           {projects && projects.map((project) => (
             <li key={project._id} onClick={() => Clique(project._id)} >
               <p>id : {project._id}</p>
