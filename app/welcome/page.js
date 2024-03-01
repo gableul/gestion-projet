@@ -1,6 +1,6 @@
 "use client"
 
-import AfficherProjet from "../AfficherProjet/page";
+import AfficherProjet from "../component/AfficherProjet";
 
 function Welcome(){
     const handleLogOut=()=>{

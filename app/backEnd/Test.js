@@ -251,14 +251,3 @@ app.patch("/ModifierProjet/:id",async (req,res) => {
 
 
 
-
-/*
-        <ul>
-          {Taches.map(task =>(
-            <li key={task._id}>
-              <p>titre : {task.titre}</p>
-
-
-            </li>
-          ))}
-        </ul>*/
