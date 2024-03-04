@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import axios, { Axios } from 'axios';
-
+import "../styles/createProject/global.css"
 function CreateTache() {
     const [Titre,setTitre] = useState("");
     const [Description,setDescription] = useState("");
@@ -31,9 +31,10 @@ function CreateTache() {
 
 
   return (
-    <div>
-      <div>
-        <label >Type :</label>
+    <div class="container">
+      <div class="form-container">
+        <h1>Creer Tache </h1>
+        <p >Type :</p>
         <select
           id="Type"
           name="Type"
@@ -45,9 +46,7 @@ function CreateTache() {
           <option value="Technique">Technique</option>
           <option value="Fonctionelle">Fonctionelle</option>
         </select>
-      </div>
-      <div>
-        <label >Titre : </label>
+        <p >Titre : </p>
         <input
           type="text"
           id="title"
@@ -56,9 +55,7 @@ function CreateTache() {
           onChange={(e) => setTitre(e.target.value)}
           required
         />
-      </div>
-      <div>
-        <label>Description : </label>
+        <p>Description : </p>
         <input
           type="text"
           id="description"
@@ -67,9 +64,7 @@ function CreateTache() {
           onChange={(e) => setDescription(e.target.value)}
           required
         />
-      </div>
-      <div>
-        <label >Effort : </label>
+        <p>Effort : </p>
         <input
           type="Number"
           id="effort"
@@ -78,9 +73,8 @@ function CreateTache() {
           onChange={(e) => setEffort(e.target.value)}
           required
         />
-      </div>
-      <div>
-        <label htmlFor="etat">État :</label>
+        <br></br>
+        <p>État :</p>
         <select
           id="etat"
           name="etat"
@@ -93,9 +87,10 @@ function CreateTache() {
           <option value="1">En cours</option>
           <option value="2">Terminé</option>
         </select>
-      </div>
+      
       <button onClick={handleSubmit}>Soumettre</button>
       <br></br><a className="lien" href="/welcome">Retour</a>
+      </div>
       </div>
 
   );

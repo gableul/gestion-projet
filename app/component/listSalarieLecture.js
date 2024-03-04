@@ -19,9 +19,9 @@ function ListSalarieLecture(props) {
     };
 
     const handleDelete = (id) => {
-        const updatedLecture = lecture.filter((item) => item !== id);
+        const updatedLecture = lecture.filter((item) => item != id);
         setlecture(updatedLecture);
-        setListeAvecId(liste_avec_id.filter((item) => item !== id));
+        setListeAvecId(liste_avec_id.filter((item) => item != id));
     };
 
     const Liste_salarie_avec_nom = () => {

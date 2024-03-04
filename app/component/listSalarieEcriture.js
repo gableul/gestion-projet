@@ -20,9 +20,9 @@ function ListSalarieEcriture(props) {
     };
 
     const handleDelete = (id) => {
-        const updatedEcriture = ecriture.filter((item) => item !== id);
+        const updatedEcriture = ecriture.filter((item) => item != id);
         setecriture(updatedEcriture);
-        setListeAvecId(liste_avec_id.filter((item) => item !== id));
+        setListeAvecId(liste_avec_id.filter((item) => item != id));
     };
 
     const Liste_salarie_avec_nom = () => {
