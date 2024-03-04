@@ -2,6 +2,7 @@
 import React from 'react';
 import SignupForm from '../component/SignUp';
 import axios, { Axios } from 'axios';
+import "../styles/signUp/global.css"
 
 const SignupPage = () => {
   const handleSignup = async (formData) => {
@@ -22,7 +23,7 @@ const SignupPage = () => {
   
 
   return (
-    <div>
+    <div className='login-box'>
       <h1>Creer un compte</h1>
       <SignupForm onSubmit={handleSignup} />
       <a className="lien" href='/connexion'>Se connecter</a>

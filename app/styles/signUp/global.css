@@ -1,0 +1,47 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    background-color: #f0f0f0; 
+}
+
+
+.login-box {
+    width: 400px;
+    padding: 50px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    box-sizing: border-box; 
+    font-size: 16px;
+}
+
+
+.login-box button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #575656; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff; 
+    font-size: 16px;
+    text-align: center;
+    transition: background-color ;
+}
+

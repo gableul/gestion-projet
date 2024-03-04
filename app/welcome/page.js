@@ -1,6 +1,7 @@
 "use client"
 
 import AfficherProjet from "../component/AfficherProjet";
+import "../styles/topBar/global.css"
 
 function Welcome(){
     const handleLogOut=()=>{
@@ -9,7 +10,10 @@ function Welcome(){
     }
     return(
         <>
+        <div className="topbar">
         <button onClick={handleLogOut}>Deconnexion</button>
+        </div>
+        <br></br>
         <AfficherProjet></AfficherProjet>
         <a className="lien" href="/Createprojet">Creer un projet</a>
         </>

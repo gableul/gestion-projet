@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import "../styles/connexion/global.css"
 
 const LoginForm = ({ onSubmit }) => {
   const [name, setName] = useState('');
@@ -15,9 +16,10 @@ const LoginForm = ({ onSubmit }) => {
 
 
   return (
-    <>
+    < div>
     <form onSubmit={handleSubmit}>
       <input
+        className='NameConnexion'
         type="text"
         placeholder="name"
         value={name}
@@ -33,7 +35,7 @@ const LoginForm = ({ onSubmit }) => {
       />
       <button type='submit'>Connexion</button>
     </form>
-    </>
+    </div>
   );
 };
 

@@ -3,7 +3,7 @@
 import React from 'react';
 import LoginForm from '../component/LoginForm';
 import axios, { Axios } from 'axios';
-import Cookies from 'js-cookie';
+import "../styles/connexion/global.css"
 
 
 const LoginPage = () => {
@@ -25,9 +25,9 @@ const LoginPage = () => {
   };
   
   return (
-    <div>
+    <div className='login-box'>
       <h1>Connexion</h1>
-      <LoginForm onSubmit={handleLogin} />
+      <LoginForm onSubmit={handleLogin}/>
       <a className="lien" href="/signup">Creer un compte</a>
     </div>
   );
