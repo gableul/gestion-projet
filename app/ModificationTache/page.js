@@ -1,7 +1,7 @@
 "use client"
 import React, { useState,useEffect } from 'react';
 import axios, { Axios } from 'axios';
-import "../styles/createProject/global.css"
+import "../styles/Crud/global.css"
 
 
 function ModificationTache() {

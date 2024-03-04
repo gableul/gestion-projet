@@ -1,6 +1,7 @@
 "use client"
 import React, { useState,useEffect } from 'react';
 import axios, { Axios } from 'axios';
+import "../styles/Crud/global.css"
 
 
 function ModificationProjet() {
@@ -28,19 +29,18 @@ function ModificationProjet() {
 
 
   return (
-    <div>
+    <div className='container'>
+      <div className='form-container'>
 
-        {/* Input pour la description */}
-        <label htmlFor="description">Description :</label>
+        
+        <p>Description :</p>
             <input
                 type="text"
                 id="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
             />
-
-            {/* Input pour le nom */}
-            <label>Nom :</label>
+            <p>Nom :</p>
             <input
                 type="text"
                 id="nom"
@@ -50,6 +50,7 @@ function ModificationProjet() {
 
             <button onClick={handleSubmit} >Modifier</button>
             <a className="lien" href="/welcome">Retour</a>
+      </div>
     </div>
 
 

@@ -4,7 +4,7 @@ import axios, { Axios } from 'axios';
 import ListSalarieEcriture from '../component/listSalarieEcriture';
 import ChefProjet from '../component/chefProjet';
 import ListSalarieLecture from '../component/listSalarieLecture';
-import "../styles/createProject/global.css"
+import "../styles/Crud/global.css"
 
 
 
