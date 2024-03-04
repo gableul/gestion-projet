@@ -1,6 +1,7 @@
 "use client"
 import React, { useState,useEffect } from 'react';
 import axios, { Axios } from 'axios';
+import "../styles/createProject/global.css"
 
 
 function ModificationTache() {
@@ -33,9 +34,10 @@ function ModificationTache() {
 
 
   return (
-    <div>
-
-
+    <div className='container'>
+      
+    <div className='form-container'>
+    <h1>Modifier tache </h1>
         <select value={newEtat} onChange={(e)=>setnewEtat(e.target.value)}>          
             <option value="">Sélectionnez l'état</option>
             <option value="0">Non Commencé</option>
@@ -43,6 +45,7 @@ function ModificationTache() {
             <option value="2">Terminé</option></select>
             <button onClick={handleSubmit} >Modifier</button>
             <a className="lien" href="/welcome">Retour</a>
+    </div>
     </div>
 
 

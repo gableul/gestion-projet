@@ -60,7 +60,7 @@ function CreateProjet  () {
     
     return (
       <div className='container'>
-      <div class="form-container">
+      <div className="form-container">
         <div>
             <label>
                 <p>Nom Du projet :</p>
