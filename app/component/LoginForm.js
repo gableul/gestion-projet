@@ -21,14 +21,14 @@ const LoginForm = ({ onSubmit }) => {
       <input
         className='NameConnexion'
         type="text"
-        placeholder="name"
+        placeholder="pseudo"
         value={name}
         onChange={(e) => setName(e.target.value)}
         required
       />
       <input
         type="password"
-        placeholder="Password"
+        placeholder="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required

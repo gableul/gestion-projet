@@ -2,7 +2,7 @@
 import React, { useState,useEffect } from 'react';
 import axios, { Axios } from 'axios';
 import ProjetSolo from '../ProjetSolo/page';
-import "../styles/global.css"
+import "../styles/projetAfficher/global.css"
 
 
 function AfficherProjet(props){
@@ -28,7 +28,9 @@ function AfficherProjet(props){
 
     return (
       <div>
+        <br></br>
         <h1>Liste des projets</h1>
+        <div className='dropdown-content'>
         <ul className='liste-projets'>
           {projects && projects.map((project) => (
             <li key={project._id} onClick={() => Clique(project._id)} >
@@ -40,6 +42,7 @@ function AfficherProjet(props){
 
           ))}
         </ul>
+        </div>
 
         {idProjet && <ProjetSolo Id={idProjet}></ProjetSolo>}
         

@@ -18,6 +18,7 @@ const LoginPage = () => {
   
       localStorage.setItem("token",response.data.token)
       localStorage.setItem("id",response.data.user.id)
+      localStorage.setItem("nom",response.data.user.nom)
       window.location.href = '/welcome'; 
     } catch (error) {
       console.error("Login failed:", error);

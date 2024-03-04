@@ -1,5 +1,13 @@
+/* Style de la liste déroulante */
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+  }
 
-.liste-projets {
+
+
+
+  .liste-projets {
     max-height: 350px; 
     overflow-y: auto; 
   }

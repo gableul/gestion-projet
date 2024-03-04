@@ -20,7 +20,7 @@ const SignupForm = ({ onSubmit }) => {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="name"
+        placeholder="pseudo"
         value={name}
         onChange={(e) => setName(e.target.value)}
         required
