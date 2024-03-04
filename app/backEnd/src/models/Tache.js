@@ -5,6 +5,10 @@ const Tache = mongoose.model("Tache",{
     _id:{
         type:Number
     },
+    titre:{
+        type:String,
+        
+    },
 
     titre:{
         type:String,

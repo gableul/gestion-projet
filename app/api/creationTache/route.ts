@@ -25,6 +25,7 @@ export async function POST(req:NextRequest){
           description:data.descrip,
           effort:data.effort,
           etat:data.etat,
+          Type:data.Typess,
           id_projet:data.idP
         }
       )

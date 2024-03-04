@@ -6,6 +6,10 @@ const Tache = mongoose.models.Tache || mongoose.model("Tache",{
         type:Number
     },
 
+    Type:{
+        type:String
+    },
+
     titre:{
         type:String,
         

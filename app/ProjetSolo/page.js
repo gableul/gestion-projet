@@ -72,6 +72,7 @@ function ProjetSolo(props){
         <table>
             <thead>
               <tr>
+                <th>Type</th>
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Effort</th>
@@ -82,6 +83,7 @@ function ProjetSolo(props){
             <tbody>
             {Taches.map(task =>(
             <tr key={task._id} >
+                  <td>{task.Type}</td>
                   <td>{task.titre}</td>
                   <td>{task.description}</td>
                   <td>{task.effort}</td> 

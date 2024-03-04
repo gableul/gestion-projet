@@ -6,7 +6,8 @@ function CreateTache() {
     const [Titre,setTitre] = useState("");
     const [Description,setDescription] = useState("");
     const [Effort,setEffort] =  useState("");
-    const [Etat,setEtat] = useState("")
+    const [Etat,setEtat] = useState("");
+    const [Type,setType] = useState("");
 
 
   // Gestionnaire de soumission pour traiter les données lors de la soumission du formulaire
@@ -20,6 +21,7 @@ function CreateTache() {
             descrip: Description,
             effort: Effort,
             etat: Etat,
+            Typess:Type,
             idP: localStorage.getItem("idProjet")
         });       
     } catch (error) {
@@ -30,6 +32,20 @@ function CreateTache() {
 
   return (
     <div>
+      <div>
+        <label >Type :</label>
+        <select
+          id="Type"
+          name="Type"
+          value={Type}
+          onChange={(e) => setType(e.target.value)}
+          required
+        >
+          <option value=""></option>
+          <option value="Technique">Technique</option>
+          <option value="Fonctionelle">Fonctionelle</option>
+        </select>
+      </div>
       <div>
         <label >Titre : </label>
         <input
