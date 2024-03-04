@@ -44,7 +44,7 @@ function ProjetSolo(props){
 
     return (
       <div>
-        <h1>Projet</h1>
+        <h1 className='title'>Projet</h1>
         <table>
           <thead>
             <tr>
