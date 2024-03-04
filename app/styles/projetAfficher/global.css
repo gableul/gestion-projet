@@ -24,11 +24,15 @@ body{
     padding: 10px; /* Espacement interne */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre pour l'effet de profondeur */
 }
+.title{
+    display: flex; /* Utilisation de Flexbox pour centrer */
+    justify-content: center; /* Centrage horizontal */
 
+}
   .liste-projets {
     max-height: 350px; 
     overflow-y: auto; 
-    font-size: 35px;
+
   }
   
   .liste-projets li {
@@ -58,7 +62,7 @@ body{
     transition: background-color 0.3s ease;
   }
 
-/* Modern Table Style */
+
 table{
   font-family: Arial, sans-serif;
   border-collapse: collapse;

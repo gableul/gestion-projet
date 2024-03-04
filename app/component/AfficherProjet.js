@@ -29,9 +29,8 @@ function AfficherProjet(props){
     return (
       <div>
         <br></br>
-        <h1>Liste des projets</h1>
+        <h1 className='title'>Liste des projets</h1>
         <div className='centered-container'>
-        
         <div className='dropdown-container'>
         <ul className='liste-projets'>
           {projects && projects.map((project) => (
@@ -44,9 +43,10 @@ function AfficherProjet(props){
 
           ))}
         </ul>
+        {idProjet && <ProjetSolo Id={idProjet}></ProjetSolo>}
         </div>
 
-        {idProjet && <ProjetSolo Id={idProjet}></ProjetSolo>}
+        
         
 
       </div>
