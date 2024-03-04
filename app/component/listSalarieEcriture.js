@@ -37,7 +37,7 @@ function ListSalarieEcriture(props) {
 
     return (
         <>
-            Ecriture
+            <div className="titreSelect">Ecriture : </div>
             <select
                 value={selectEcriture}
                 onChange={handleEcritureChange}

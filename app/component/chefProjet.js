@@ -9,7 +9,7 @@ function ChefProjet(props){
     }
     return(
         <form onSubmit={handleSubmit} >
-         Chef de Projet:
+         <div className='titreSelect'>Chef de Projet : </div>
          <br></br>
           <select
             value={Chef}

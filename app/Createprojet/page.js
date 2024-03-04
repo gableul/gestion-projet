@@ -63,8 +63,7 @@ function CreateProjet  () {
       <div class="form-container">
         <div>
             <label>
-                Nom Du projet :
-                <br></br>
+                <p>Nom Du projet :</p>
                 <input
                     type="text"
                     value={Titre}
