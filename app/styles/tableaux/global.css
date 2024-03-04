@@ -44,4 +44,17 @@ table{
       text-overflow: ellipsis;
     }
   }
-  
+
+.delete-button {
+    background-color: #6c6867;
+    color: #fff; 
+    border: none; 
+    padding: 2px 3px;
+    border-radius: 5px;
+    font-size: 5px;
+    cursor: pointer;
+}
+
+.delete-button:hover{
+background-color: #c0392b;
+}
