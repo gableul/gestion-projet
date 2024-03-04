@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import "../styles/tableaux/global.css"
 const axios = require("axios")
 let liste_avec_id = []
 
@@ -30,7 +31,8 @@ function ListSalarieEcriture(props){
       }
       const Liste_avec_nom = Liste_salarie_avec_nom()
       const liste = Liste_avec_nom.filter((element) => {return liste_avec_id.includes(parseInt(element.id))});
-
+    
+      
 
 
     return (
@@ -45,7 +47,8 @@ function ListSalarieEcriture(props){
                 <option value={item._id}>{item.nom}  {item.Prenom}</option>
             ))}
                     </select>
-                    <div>
+                    <br></br>
+                    <div >
                     {ecriture.length > 0 && (
                             <table>
                                 <thead>

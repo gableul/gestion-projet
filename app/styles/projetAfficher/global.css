@@ -29,24 +29,24 @@ body{
     justify-content: center; /* Centrage horizontal */
 
 }
-  .liste-projets {
-    max-height: 350px; 
-    overflow-y: auto; 
+.liste-projets {
+  max-height: 350px; 
+  overflow-y: auto; 
 
-  }
-  
-  .liste-projets li {
-    padding: 10px;
-    border-bottom: 1px solid #ccc; /* Ligne de séparation entre chaque élément de la liste */
-  }
-  
-  .liste-projets li:last-child {
-    border-bottom: none; /* Supprime la ligne de séparation du dernier élément */
-  }
-  
-  .liste-projets button {
-    margin-top: 5px;
-  }
+}
+
+.liste-projets li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc; /* Ligne de séparation entre chaque élément de la liste */
+}
+
+.liste-projets li:last-child {
+  border-bottom: none; /* Supprime la ligne de séparation du dernier élément */
+}
+
+.liste-projets button {
+  margin-top: 5px;
+}
 
   .lien{
     display: inline-block;

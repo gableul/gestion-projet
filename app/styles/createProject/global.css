@@ -1,33 +1,38 @@
-/* Style du formulaire */
+.container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+}
+
+
 .form-container {
-    max-width: 400px; /* Largeur maximale du formulaire */
-    margin: 0 auto; /* Centrage horizontal */
-    padding: 20px; /* Espacement interne */
-    background-color: #fff; /* Couleur de fond */
-    border-radius: 10px; /* Bords arrondis */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre pour l'effet de profondeur */
+    max-width: 600px;
+    width: 80%; 
+    padding: 20px; 
+    background-color: #fff; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
-/* Style des champs de saisie */
 .form-container input[type="text"] {
-    width: 100%; /* Occupe toute la largeur du conteneur */
-    padding: 10px; /* Espacement interne */
-    margin-bottom: 10px; /* Espacement inférieur */
-    border: 1px solid #ccc; /* Bordure grise */
-    border-radius: 5px; /* Bords arrondis */
-    box-sizing: border-box; /* Inclure le padding et la bordure dans la largeur */
-    font-size: 16px; /* Taille de la police */
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 10px;
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    box-sizing: border-box;
+    font-size: 16px;
 }
 
-/* Style des étiquettes */
+
 .form-container label {
-    font-weight: bold; /* Texte en gras */
+    font-weight: bold; 
 }
 
-/* Style des paragraphes */
 .form-container p {
-    font-weight: bold; /* Texte en gras */
-    margin-top: 20px; /* Espacement supérieur */
+    font-weight: bold; 
+    margin-top: 20px; 
 }
 
 /* Style du bouton */
@@ -57,3 +62,23 @@
 .form-container a:hover {
     text-decoration: underline; /* Soulignement au survol */
 }
+
+
+/* Style du select */
+select {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    font-size: 16px;
+    color: #333;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    height: 40px; /* Augmentation de la hauteur */
+    line-height: 40px; /* Alignement vertical du texte */
+  }
+  
+
+  

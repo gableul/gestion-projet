@@ -59,6 +59,7 @@ function CreateProjet  () {
 
     
     return (
+      <div className='container'>
       <div class="form-container">
         <div>
             <label>
@@ -86,6 +87,7 @@ function CreateProjet  () {
         <button onClick={handleClick}>Creer Projet</button>
         <br></br>
         <a className="lien" href="/welcome">Retour</a>
+    </div>
     </div>
 
       );
