@@ -2,6 +2,11 @@
 body{
     background-color: #f4f4f4;
 }
+.centered-container {
+    display: flex; /* Utilisation de Flexbox pour centrer */
+    justify-content: center; /* Centrage horizontal */
+}
+
 .dropdown-container {
     width: 90%; /* Occupe toute la largeur de la page */
     border-radius: 10px; /* Bords arrondis */
@@ -23,6 +28,7 @@ body{
   .liste-projets {
     max-height: 350px; 
     overflow-y: auto; 
+    font-size: 35px;
   }
   
   .liste-projets li {
