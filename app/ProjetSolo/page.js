@@ -44,7 +44,7 @@ function ProjetSolo(props){
 
     return (
       <div>
-        <h1 className='title'>Projet</h1>
+        <h1 className='title'>Informations</h1>
         <table>
           <thead>
             <tr>
@@ -65,7 +65,7 @@ function ProjetSolo(props){
           </tbody>
         </table>
 
-        {Droit.Chef ? <div> <a className="lien" href="http://localhost:3000/CreateTache">Creer Tache</a><br></br><a className="lien" href="http://localhost:3000/ModifierProjet">Modifier Projet</a></div>:Droit.Lecteur ? <div> <a className="lien" href="http://localhost:3000/CreateTache">Creer Tache</a><br></br></div>:""  }
+        {Droit.Chef ? <div> <a className="lien" href="http://localhost:3000/CreateTache">Creer Tache</a><a className="lien" href="http://localhost:3000/ModifierProjet">Modifier Projet</a></div>:Droit.Lecteur ? <div> <a className="lien" href="http://localhost:3000/CreateTache">Creer Tache</a><br></br></div>:""  }
 
         
 
