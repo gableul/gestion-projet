@@ -18,6 +18,8 @@ export async function POST(req:NextRequest){
     const A = await dbConnect();
     const parametre  = req.nextUrl.searchParams
     const data = await req.json();
+    data.Ecriture.push(parametre.get("chef"));
+    data.Lecture.push(parametre.get("chef"));
    
     const project = new Projet(
       {

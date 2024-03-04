@@ -22,17 +22,30 @@ export async function GET(req:NextRequest){
 
     const data1 = await Projet.find({Ecriture: {$in:[parametre.get("id")]}});
     const data2 = await Projet.find({Lecteur: {$in:[parametre.get("id")]}});
+    const data3 = await Projet.find({Chef_Projet:parametre.get("id")})
     let liste = [];
     let liste_sans_doublon = [];
     let liste_with_id = [];
-    if(data1.length == 0){
-      liste = data2
-    }if(data1.length != 0 && data2.length == 0){
-  
-      liste = data1
-    }else{
-      liste = [...data1,...data2]
-    }
+    if(data3.length == 0){
+        if(data1.length == 0){
+          liste = [...data2,...data3]
+        }if(data1.length != 0 && data2.length == 0){
+      
+          liste = [...data1,...data3]
+        }else{
+          liste = [...data1,...data2,...data3]
+        }
+      }else{
+        if(data1.length == 0){
+          liste = data2
+        }if(data1.length != 0 && data2.length == 0){
+      
+          liste = data1
+        }else{
+          liste = [...data1,...data2]
+        }
+
+      }
   
     for(let i =0;i<liste.length;i++){
         if(i ==0){

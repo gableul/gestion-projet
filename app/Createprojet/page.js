@@ -35,10 +35,11 @@ function CreateProjet  () {
     
 
     async function handleClick(){
-      try{
-      if((lecture.length==0&&Ecriture.length==0)||Chef_Projet.length==0|Titre.length==0||lecture.length==0){
+      if((lecture.length==0&&Ecriture.length==0)||Chef_Projet.length==0|Titre.length==0){
         alert("Merci de remplir tous les champs")
       }
+      try{
+      
         const data = await axios.post("http://localhost:3000/api/CreerProjet?nom="+Titre+"&description="+Description+"&chef="+ Chef_Projet , {Lecture :lecture,Ecriture : Ecriture})
       } catch (error) {
         console.error("Erreur lors de la création de la tâche :", error);

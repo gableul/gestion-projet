@@ -1,12 +1,12 @@
 "use client"
 import React from 'react';
-import SignupForm from '@/app/component/SignUp';
+import SignupForm from '../component/SignUp';
 import axios, { Axios } from 'axios';
 
 const SignupPage = () => {
   const handleSignup = async (formData) => {
     try {
-      const response = await axios.post("http://localhost:3003/users/register", {
+      const response = await axios.post("http://localhost:3000/api/users/register", {
         password: formData.password,
         nom: formData.name,
         prenom: formData.prenom

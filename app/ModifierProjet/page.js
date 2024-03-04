@@ -12,7 +12,7 @@ function ModificationProjet() {
   // Gestionnaire de soumission pour traiter les données lors de la soumission du formulaire
 
   async function handleSubmit(){
-    if(description.length==0|| nom.length==0){
+    if(description.length==0 && nom.length==0){
       alert("Aucune modification n'as été réalisé !")
       window.location.href = '/welcome';  
     }else{
