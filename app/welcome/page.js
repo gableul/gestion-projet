@@ -12,9 +12,9 @@ function Welcome(){
     return(
         <>
         <div className="topbar">
-        <button onClick={handleLogOut} className="logout-button">Deconnexion</button>
-        <img src="../favicon.ico" alt="Logo" className="logo"></img>
         <div className="welcom-div">Bienvenue {name}</div>
+        <img src="../favicon.ico" alt="Logo" className="logo"></img>
+        <button onClick={handleLogOut} className="logout-button">Deconnexion</button>
         </div>
         <br></br>
         <AfficherProjet></AfficherProjet>
