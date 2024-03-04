@@ -18,9 +18,9 @@ export async function GET(req:NextRequest){
     const A = await dbConnect();
     const parametre  = req.nextUrl.searchParams
 
-    const data = await Salarie.findById(parametre.get("id"));
+    const data = await Salarie.findById(parseInt(parametre.get("id")));
 
     return NextResponse.json({
-        salarie:data[0]
+        salarie:data
     })
 }

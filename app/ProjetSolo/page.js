@@ -21,10 +21,6 @@ function ProjetSolo(props){
       }
     }
 
-    const handleNom=async (id)=>{
-      const data = await axios.get("http://localhost:3000/api/GetNom?id="+id);
-      return (data.data.nom )
-    }
 
     useEffect(() => {
         const da = async ()=>{
@@ -32,9 +28,8 @@ function ProjetSolo(props){
         const liste2 = await axios.post("http://localhost:3000/api/TachebyId",{liste:liste.data.data[0].Taches})
         const droits = await axios.get("http://localhost:3000/api/Droit?IdProjet="+localStorage.getItem("idProjet")+"&IdUser="+localStorage.getItem("id"));
         const data = await axios.get("http://localhost:3000/api/GetNom?id="+liste.data.data[0].Chef_Projet);
-        SetNomPrenom(data);
+        SetNomPrenom(data.data.salarie);
         setDroit(droits.data);
-        console.log("icicici"+data.data.salarie)
         setProjects(liste.data.data);
         setTaches(liste2.data.data);
         }
@@ -63,7 +58,7 @@ function ProjetSolo(props){
               <tr key={project._id}>
                 <td>{project.nom}</td>
                 <td>{project.Description}</td>
-                <td>{project.Chef_Projet}</td>
+                <td>{NomPrenom.nom} {NomPrenom.Prenom}</td>
               
               </tr>
             ))}
