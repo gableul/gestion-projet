@@ -1,0 +1,59 @@
+/* Style du formulaire */
+.form-container {
+    max-width: 400px; /* Largeur maximale du formulaire */
+    margin: 0 auto; /* Centrage horizontal */
+    padding: 20px; /* Espacement interne */
+    background-color: #fff; /* Couleur de fond */
+    border-radius: 10px; /* Bords arrondis */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre pour l'effet de profondeur */
+}
+
+/* Style des champs de saisie */
+.form-container input[type="text"] {
+    width: 100%; /* Occupe toute la largeur du conteneur */
+    padding: 10px; /* Espacement interne */
+    margin-bottom: 10px; /* Espacement inférieur */
+    border: 1px solid #ccc; /* Bordure grise */
+    border-radius: 5px; /* Bords arrondis */
+    box-sizing: border-box; /* Inclure le padding et la bordure dans la largeur */
+    font-size: 16px; /* Taille de la police */
+}
+
+/* Style des étiquettes */
+.form-container label {
+    font-weight: bold; /* Texte en gras */
+}
+
+/* Style des paragraphes */
+.form-container p {
+    font-weight: bold; /* Texte en gras */
+    margin-top: 20px; /* Espacement supérieur */
+}
+
+/* Style du bouton */
+.form-container button {
+    display: block; /* Affichage en bloc pour occuper toute la largeur */
+    width: 100%; /* Occupe toute la largeur du conteneur */
+    padding: 10px; /* Espacement interne */
+    background-color: #6c6867; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur du texte */
+    border: none; /* Suppression de la bordure */
+    border-radius: 5px; /* Bords arrondis */
+    cursor: pointer;
+    font-size: 16px; /* Taille de la police */
+    margin-top: 20px; /* Espacement supérieur */
+}
+
+/* Style du lien de retour */
+.form-container a {
+    display: block; /* Affichage en bloc pour occuper toute la largeur */
+    text-align: center; /* Centrage du texte */
+    margin-top: 20px; /* Espacement supérieur */
+    text-decoration: none; /* Suppression du soulignement par défaut */
+    color: #6c6867; /* Couleur du texte */
+}
+
+/* Style du lien de retour au survol */
+.form-container a:hover {
+    text-decoration: underline; /* Soulignement au survol */
+}

@@ -4,6 +4,7 @@ import axios, { Axios } from 'axios';
 import ListSalarieEcriture from '../component/listSalarieEcriture';
 import ChefProjet from '../component/chefProjet';
 import ListSalarieLecture from '../component/listSalarieLecture';
+import "../styles/createProject/global.css"
 
 
 
@@ -58,35 +59,35 @@ function CreateProjet  () {
 
     
     return (
-      <div>
+      <div class="form-container">
         <div>
-      <label>
-        Nom Du projet :
-        <br></br>
-      <input
-        type="text"
-        value={Titre}
-        onChange={handleInputChange}
-      />
-      </label>
-      <p>Description :</p>
-
-      <input
-        type="text"
-        value={Description}
-        onChange={handleInputChange2}
-      />
-
-    </div>
-          <ChefProjet liste_salarie={liste_salarie} Chef={Chef_Projet} setChef={setChef_Projet}></ChefProjet>
-          <br></br>
-          <ListSalarieLecture liste_salarie={liste_salarie} lecture={lecture} setlecture={setLecture} ></ListSalarieLecture>
-          <br></br>
-          <ListSalarieEcriture liste_salarie={liste_salarie} ecriture={Ecriture} setecriture={setEcriture}></ListSalarieEcriture>
-          <br></br>
-            <button onClick={handleClick}>Creer Projet</button>
-            <br></br><a className="lien" href="/welcome">Retour</a>
+            <label>
+                Nom Du projet :
+                <br></br>
+                <input
+                    type="text"
+                    value={Titre}
+                    onChange={handleInputChange}
+                />
+            </label>
+            <p>Description :</p>
+            <input
+                type="text"
+                value={Description}
+                onChange={handleInputChange2}
+            />
         </div>
+        <ChefProjet liste_salarie={liste_salarie} Chef={Chef_Projet} setChef={setChef_Projet}></ChefProjet>
+        <br></br>
+        <ListSalarieLecture liste_salarie={liste_salarie} lecture={lecture} setlecture={setLecture} ></ListSalarieLecture>
+        <br></br>
+        <ListSalarieEcriture liste_salarie={liste_salarie} ecriture={Ecriture} setecriture={setEcriture}></ListSalarieEcriture>
+        <br></br>
+        <button onClick={handleClick}>Creer Projet</button>
+        <br></br>
+        <a className="lien" href="/welcome">Retour</a>
+    </div>
+
       );
 };
 
