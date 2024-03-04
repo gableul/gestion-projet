@@ -30,7 +30,7 @@ function AfficherProjet(props){
       <div>
         <br></br>
         <h1>Liste des projets</h1>
-        <div className='dropdown-content'>
+        <div className='dropdown-container'>
         <ul className='liste-projets'>
           {projects && projects.map((project) => (
             <li key={project._id} onClick={() => Clique(project._id)} >
@@ -49,8 +49,9 @@ function AfficherProjet(props){
 
 
 
-      
+      <br></br>
       </div>
+      
     );
   };
   

@@ -1,11 +1,24 @@
-/* Style de la liste déroulante */
+
+body{
+    background-color: #f4f4f4;
+}
 .dropdown-container {
+    width: 90%; /* Occupe toute la largeur de la page */
+    border-radius: 10px; /* Bords arrondis */
+    overflow: hidden; 
+    background-color: white; /* Couleur de fond */
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content {
     position: relative;
     display: inline-block;
-  }
-
-
-
+    background-color: #e64c4c; /* Couleur de fond */
+    border-radius: inherit; /* Hérite des bords arrondis de la container */
+    padding: 10px; /* Espacement interne */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre pour l'effet de profondeur */
+}
 
   .liste-projets {
     max-height: 350px; 
