@@ -29,7 +29,7 @@ function AfficherProjet(props){
 
     return (
       <div>
-        <br></br>
+      
         <h1 className='title'>Liste des projets</h1>
         <div className='centered-container'>
         <div className='dropdown-container'>

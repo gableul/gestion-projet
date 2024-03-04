@@ -13,11 +13,12 @@ function Welcome(){
         <>
         <div className="topbar">
         <button onClick={handleLogOut} className="logout-button">Deconnexion</button>
+        <img src="../favicon.ico" alt="Logo" className="logo"></img>
         <div className="welcom-div">Bienvenue {name}</div>
         </div>
         <br></br>
         <AfficherProjet></AfficherProjet>
-        <a className="lien" href="/Createprojet">Creer un projet</a>
+        <div className="buttoncenter"><a className="lienCreerprojet" href="/Createprojet">Creer un projet</a></div>
         </>
     )
 };

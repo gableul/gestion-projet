@@ -3,15 +3,15 @@ body{
     background-color: #f4f4f4;
 }
 .centered-container {
-    display: flex; /* Utilisation de Flexbox pour centrer */
-    justify-content: center; /* Centrage horizontal */
+    display: flex; 
+    justify-content: center; 
 }
 
 .dropdown-container {
-    width: 90%; /* Occupe toute la largeur de la page */
-    border-radius: 10px; /* Bords arrondis */
+    width: 90%;
+    border-radius: 10px;
     overflow: hidden; 
-    background-color: white; /* Couleur de fond */
+    background-color: white;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -19,16 +19,17 @@ body{
 .dropdown-content {
     position: relative;
     display: inline-block;
-    background-color: #e64c4c; /* Couleur de fond */
-    border-radius: inherit; /* Hérite des bords arrondis de la container */
-    padding: 10px; /* Espacement interne */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre pour l'effet de profondeur */
+    background-color: #e64c4c; 
+    border-radius: inherit; 
+    padding: 10px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
 }
 .title{
-    display: flex; /* Utilisation de Flexbox pour centrer */
-    justify-content: center; /* Centrage horizontal */
-
+    padding-top: 3%;
+    display: flex; 
+    justify-content: center; 
 }
+
 .liste-projets {
   max-height: 350px; 
   overflow-y: auto; 
@@ -37,30 +38,50 @@ body{
 
 .liste-projets li {
   padding: 10px;
-  border-bottom: 1px solid #ccc; /* Ligne de séparation entre chaque élément de la liste */
+  border-bottom: 1px solid #ccc; 
 }
 
 .liste-projets li:last-child {
-  border-bottom: none; /* Supprime la ligne de séparation du dernier élément */
+  border-bottom: none;
 }
 
 .liste-projets button {
   margin-top: 5px;
 }
 
-  .lien{
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #ffffff;
-    background-color: #6c6867;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+.lien{
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #6c6867;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.lienCreerprojet{
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #6c6867;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.buttoncenter{
+  display: flex;
+  justify-content: center;
+}
 
 
 table{
