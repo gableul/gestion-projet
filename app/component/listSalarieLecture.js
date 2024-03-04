@@ -29,7 +29,7 @@ function ListSalarieLecture(props){
       const liste = Liste_avec_nom.filter((element) => {return liste_avec_id.includes(parseInt(element.id))});
     return (
         <>
-        Lecteur:
+        Lecture
                     <select
                         value={selectLecture}
                         onChange={handleLectureChange}
