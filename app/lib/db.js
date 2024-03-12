@@ -1,0 +1,38 @@
+import mongoose, { Mongoose } from "mongoose";
+
+global.mongoose = {
+  conn: null,
+  promise: null,
+};
+
+export async function dbConnect() {
+  try {
+    if (global.mongoose && global.mongoose.conn) {
+      return global.mongoose.conn;
+    } else {
+      const conString = "mongodb+srv://lenny30:F2fwBNweWmd5nnj3@cluster0.9cbv1pt.mongodb.net/";
+
+      const promise = mongoose.connect(conString, {
+        autoIndex: true,
+      });
+
+      global.mongoose = {
+        conn: await promise,
+        promise,
+      };
+
+      return await promise;
+    }
+  } catch (error) {
+    console.error("Error connecting to the database:", error);
+    throw new Error("Database connection failed");
+  }
+}
+
+export const disconnect = () => {
+  if (!global.mongoose.conn) {
+    return;
+  }
+  global.mongoose.conn = null;
+  mongoose.disconnect();
+};

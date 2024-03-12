@@ -1,0 +1,49 @@
+
+.topbar {
+    display: flex; /* Utilisation de flexbox */
+    justify-content: space-between; /* Alignement des éléments sur les extrémités */
+    align-items: center; /* Centrage vertical des éléments */
+    position: fixed; /* Position fixe */
+    top: 0; /* Collé au bord supérieur */
+    left: 0; /* Collé au bord gauche */
+    right: 0; /* Collé au bord droit */
+    background-color: #333; /* Couleur de fond de la barre */
+    color: #fff; /* Couleur du texte */
+    padding: 10px 20px; /* Espacement intérieur */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre pour l'effet de profondeur */
+}
+
+.topbar a {
+    color: #fff;
+    text-decoration: none; 
+    margin-right: 20px;
+    font-size: 16px; 
+}
+
+
+.topbar a:hover {
+    text-decoration: underline; 
+}
+
+.topbar .logout-button {
+    background-color: #6c6867;
+    color: #fff; 
+    border: none; 
+    padding: 8px 12px;
+    border-radius: 5px; 
+    cursor: pointer;
+}
+
+.topbar .logout-button:hover{
+background-color: #c0392b;
+}
+
+.welcome-div {
+    font-size: 27px;
+    font-weight: bold; 
+}
+
+.logo {
+    height: 70px;
+    padding:0px;
+}

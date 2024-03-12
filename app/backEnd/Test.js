@@ -75,10 +75,11 @@ app.post("/creerProjet/:nom/:description/:chef",(req,res)=>{
       }
     )
     project.save();
+    console.log("Finis")
     res.send("Création du projet finis !")
 })
 
-app.post("/creationTache",(req,res)=>{
+app.post("/creationTache",async (req,res)=>{
   const data = req.body
   const tache = new Tache(
     {
@@ -91,6 +92,11 @@ app.post("/creationTache",(req,res)=>{
     }
   )
   tache.save();
+
+  let tache_projet = await Projet.findById(data.idP)
+  tache_projet.Taches.push(tache._id)
+  await Projet.findByIdAndUpdate(data.idP,{Taches:tache_projet.Taches})
+  console.log("finis creation tache")
   res.send("Création de la tache finis !")
 })
 
@@ -101,7 +107,9 @@ app.delete("/SupprimerTache/:id",async (req,res)=>{
 
 app.patch("/ModifierEtatTache/:id",async (req,res)=>{
       const data = req.body
+      console.log(data.etat+"  dfdz")
       await Tache.findByIdAndUpdate(req.params.id,{etat:data.etat});
+      console.log("Modification etat fini")
       res.send("Modification de l'etat terminé");
 
 })
@@ -145,6 +153,95 @@ app.post("/users/register", async (req, res, next) => {
 
 });
 
+app.get("/GetNom/:id",async (req,res)=>{
+    const data = await Salarie.findById(req.params.id);
+    res.send({salarie:data[0]})
+})
+
+app.get("/Projet/:id",async (req,res) =>{
+  const data1 = await Projet.find({Ecriture: {$in:[req.params.id]}});
+  const data2 = await Projet.find({Lecteur: {$in:[req.params.id]}});
+  let liste = [];
+  let liste_sans_doublon = [];
+  let liste_with_id = [];
+  if(data1.length == 0){
+    liste = data2
+  }if(data1.length != 0 && data2.length == 0){
+
+    liste = data1
+  }else{
+    console.log("ca rente par la")
+    liste = [...data1,...data2]
+  }
+
+  for(let i =0;i<liste.length;i++){
+      if(i ==0){
+        liste_sans_doublon.push(liste[i])
+        liste_with_id.push(liste[i]._id)
+      }else{
+        if(!liste_with_id.includes(liste[i]._id)){
+            liste_sans_doublon.push(liste[i])
+            liste_with_id.push(liste[i]._id)
+        }
+      }
+  }
+
+
+  res.send(liste_sans_doublon);
+})
+
+app.get("/ProjetbyId/:id",async (req,res) =>{
+  const data = await Projet.find({_id:req.params.id})
+  res.send(data);
+})
+
+app.post("/TachebyId",async (req,res) =>{
+  const listeIDTache = req.body.liste;
+  console.log("ff"+req.body.liste)
+  let liste_Tache = [];
+  if(listeIDTache.length == 1){
+      const data  = await Tache.findById(listeIDTache[0])
+      console.log("ici "+data)
+      res.send([data]);
+      
+  }else{
+      console.log(listeIDTache+"dsdsdsds")
+      for(let i =0;i<listeIDTache.length;i++){
+        const data  = await Tache.findById(listeIDTache[i])
+        liste_Tache.push(data);
+      }
+      res.send(liste_Tache)
+
+  }
+})
+
+app.get("/Droit/:IdProjet/:IdUser",async (req,res) => {
+    const data = await Projet.findById(req.params.IdProjet);
+    let Droit_lecteur = false
+    let Droit_Chef = data.Chef_Projet == req.params.IdUser
+    if(data.Ecriture.includes(req.params.IdUser)){
+        Droit_lecteur = true;
+    }
+
+    res.send({Lecteur:Droit_lecteur,Chef:Droit_Chef})
+})
+
+app.get("/Tache/:id",async (req,res) =>{
+
+    const data = await Projet.findById(req.params.id);
+
+    res.send(data);
+})
+
+app.patch("/ModifierProjet/:id",async (req,res) => {
+      const data = req.body
+      console.log(data)
+      await Projet.findByIdAndUpdate(req.params.id,{Description:data.Description,nom:data.Nom})
+      console.log("Modification de projet finis ");
+
+      res.send("Projet a bien été modifié")
+
+})
 
 
 
